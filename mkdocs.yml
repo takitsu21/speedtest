@@ -1,0 +1,52 @@
+site_name: speedtest
+repo_url: https://github.com/takitsu21/speedtest
+site_url: https://takitsu21.github.io/speedtest
+site_description: Speed CLI tool to test your network connectivity
+site_author: Dylann Batisse
+edit_uri: edit/main/docs/
+repo_name: takitsu21/speedtest
+copyright: Maintained by <a href="https://takitsu21.com">takitsu21</a>.
+
+nav:
+  - Home: index.md
+  - Modules: modules.md
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [speedtest]
+theme:
+  name: material
+  feature:
+    tabs: true
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/takitsu21/speedtest
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/speedtest
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
