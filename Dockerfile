@@ -2,6 +2,10 @@
 FROM python:3.12-slim
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
+
+RUN apt update -y \
+    && apt install -y iputils-ping
+
 # Change the working directory to the `app` directory
 WORKDIR /app
 
@@ -18,4 +22,5 @@ ADD . /app
 # Sync the project
 RUN uv sync --frozen
 
-CMD [ "python", "speedtest/main.py"]
+
+CMD [ "uv", "run", "python", "speedtest/main.py"]
