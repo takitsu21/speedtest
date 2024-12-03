@@ -30,7 +30,7 @@ def display_results(download_result: result.Result, upload_result: result.Result
 @click.option("--download", "-d", is_flag=True, help="Run download test")
 @click.option("--download_size", "-ds", type=int, default=DOWNLOAD_SIZE, help="Download size in MB")
 @click.option("--upload_size", "-us", type=int, default=UPLOAD_SIZE, help="Upload size in MB")
-@click.option("--attempts", "-a", type=int, default=10, help="Number of attempts")
+@click.option("--attempts", "-a", type=int, default=5, help="Number of attempts")
 def main(download: bool, upload: bool, download_size: int, upload_size: int, attempts: int) -> None:
     s = speedtest.SpeedTest(url=URL, download_size=download_size, upload_size=upload_size, attempts=attempts)
     if download:
