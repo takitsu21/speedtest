@@ -16,7 +16,7 @@ import rich
 import rich.table
 from alive_progress import alive_bar
 
-from speedtest.models import result
+from speedtest.models import metadata, result
 
 CHUNK_SIZE = 1024 * 1024  # 1MB
 DOWNLOAD_SIZE = CHUNK_SIZE * 100  # 10MB
@@ -50,7 +50,7 @@ class SpeedTest:
         self._ping_thread.start()
         self.latency = None
 
-    def wait(self) -> None:
+    def _wait(self) -> None:
         if self._ping_thread.is_alive():
             self._ping_thread.join()
 
@@ -65,14 +65,28 @@ class SpeedTest:
     def data_blocks(self):
         return b"0" * self.upload_size
 
+    def _http_latency(self, url: str, **kwargs):
+        start = time.perf_counter()
+        client().head(url, **kwargs)
+        return (time.perf_counter() - start) * 1000
+
+    @property
+    def download_latency(self):
+        return self._http_latency(f"{self.url}/__down", params={"bytes": 0})
+
+    @property
+    def upload_latency(self):
+        return self._http_latency(f"{self.url}/__up")
+
     def ping(self) -> float:
         # Determine the command parameters based on the OS
         param = "-n" if platform.system().lower() == "windows" else "-c"
         timeout_param = "-w" if platform.system().lower() == "windows" else "-W"
 
         try:
+            ping_cmd = shutil.which("ping")
             result = subprocess.run(  # noqa: S603
-                [shutil.which("ping"), param, "3", timeout_param, "3", urllib.parse.urlparse(self.url).hostname],
+                [ping_cmd, param, "3", timeout_param, "3", urllib.parse.urlparse(self.url).hostname],
                 capture_output=True,
                 text=True,
             )
@@ -90,7 +104,6 @@ class SpeedTest:
                 if time_match:
                     avg_latency = 0
                     for match in time_match.groups():
-                        rich.print(match)
                         avg_latency += float(match)
                     self.latency = avg_latency / len(time_match.groups())
                 else:
@@ -107,29 +120,37 @@ class SpeedTest:
     def _compute_network_speed(self, bar: Any, size_to_process: int, func: Callable) -> result.Result:
         total_time = 0
         jitter = 0
-        ping_times = []
-        for attempt in range(1, self.attempts):
+        times_to_process = []
+        jitters = []
+        for attempt in range(1, self.attempts + 1):
             start = time.perf_counter()
             func()
             elapsed_time = time.perf_counter() - start
+            times_to_process.append(elapsed_time)
+
+            if len(times_to_process) > 1:
+                jitter = abs(times_to_process[-1] - times_to_process[-2])
+                jitters.append(jitter)
 
             total_time += elapsed_time
-            ping_times.append(elapsed_time)
-
-            if len(ping_times) > 1:
-                jitter = abs(ping_times[-1] - ping_times[-2])
-
             average_time = total_time / attempt
             speed_mbps = (size_to_process * 8) / (average_time * 1024 * 1024)
             self._update_progress(bar=bar, speed=speed_mbps, jitter=jitter)
 
-        return result.Result(speed=speed_mbps, jitter=jitter, latency=self.latency)
+        jitter = sum(jitters) / len(jitters) if jitters else times_to_process[-1]
+        if not self.latency:
+            self._wait()
+
+        http_latency = self.download_latency if getattr(func, "__name__", "_download") == "_download" else self.upload_latency
+        return result.Result(speed=speed_mbps, jitter=jitter, latency=self.latency, http_latency=http_latency)
 
     def download_speed(self):
         rich.print("Running download test... 🚀")
 
         with track_progress() as bar:
-            download_result = self._compute_network_speed(bar=bar, size_to_process=self.download_size, func=self._download)
+            download_result = self._compute_network_speed(
+                bar=bar, size_to_process=self.download_size, func=self._download
+            )
 
         return download_result
 
@@ -139,3 +160,7 @@ class SpeedTest:
             upload_result = self._compute_network_speed(bar, self.upload_size, self._upload)
 
         return upload_result
+
+    @property
+    def metadata(self) -> metadata.Metadata:
+        return metadata.Metadata.model_validate(client().get(f"{self.url}/meta").json())
