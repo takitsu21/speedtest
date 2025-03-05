@@ -12,7 +12,7 @@ UPLOAD_SIZE = CHUNK_SIZE * 50  # 50MB
 URL = "https://speed.cloudflare.com/"
 
 
-def display_results(download_result: result.Result, upload_result: result.Result, metadata: metadata.Metadata) -> None:
+def display_results(download_result: result.Result | None, upload_result: result.Result | None, metadata: metadata.Metadata) -> None:
     table = rich.table.Table(title="Speedtest Results", show_header=True, border_style="blue", title_style="bold")
     table.add_column("Metric", style="bold green")
     table.add_column("Download", style="bold yellow")
@@ -52,13 +52,13 @@ def display_results(download_result: result.Result, upload_result: result.Result
 @click.option("--attempts", "-a", type=int, default=5, help="Number of attempts")
 def main(download: bool, upload: bool, download_size: int, upload_size: int, attempts: int) -> None:
     s = speedtest.SpeedTest(url=URL, download_size=download_size, upload_size=upload_size, attempts=attempts)
-    if download:
-        download_result = s.download_speed()
-    if upload:
-        upload_result = s.download_speed()
-    if not download and not upload:
-        download_result = s.download_speed()
-        upload_result = s.upload_speed()
+    # if download:
+    #     download_result = s.download_speed()
+    # if upload:
+    #     upload_result = s.download_speed()
+    # if not download and not upload:
+    download_result = s.download_speed()
+    upload_result = s.upload_speed()
 
     display_results(download_result, upload_result, s.metadata)
 
