@@ -12,9 +12,9 @@ class Metadata(BaseModel):
     isp: str = Field(alias="asOrganization")
     colo: str
     country: str
-    city: Optional[str] = Field(default=None)
-    region: Optional[str] = Field(default=None)
-    postal_code: Optional[str] = Field(alias="postalCode", default=None)
+    city: Optional[str] = Field(default="N/A")
+    region: Optional[str] = Field(default="N/A")
+    postal_code: Optional[str] = Field(alias="postalCode", default="N/A")
     latitude: str
     longitude: str
 
