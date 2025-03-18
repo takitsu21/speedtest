@@ -1,0 +1,1 @@
+{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"speedtest","text":"<p>Speed CLI tool to test your network connectivity</p>"},{"location":"modules/","title":"Modules","text":""}]}
