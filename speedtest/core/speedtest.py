@@ -18,15 +18,6 @@ from alive_progress import alive_bar
 
 from speedtest.models import metadata, result
 
-CHUNK_SIZE = 1024 * 1024  # 1MB
-DOWNLOAD_SIZE = CHUNK_SIZE * 100  # 10MB
-UPLOAD_SIZE = CHUNK_SIZE * 50  # 10MB
-
-URL = "https://speed.cloudflare.com/"
-
-
-# Test the function
-
 
 @functools.cache
 def client() -> httpx.Client:
@@ -141,7 +132,9 @@ class SpeedTest:
         if not self.latency:
             self._wait()
 
-        http_latency = self.download_latency if getattr(func, "__name__", "_download") == "_download" else self.upload_latency
+        http_latency = (
+            self.download_latency if getattr(func, "__name__", "_download") == "_download" else self.upload_latency
+        )
         return result.Result(speed=speed_mbps, jitter=jitter, latency=self.latency, http_latency=http_latency)
 
     def download_speed(self):

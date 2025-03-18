@@ -1,1 +1,1 @@
-::: speedtest.foo
+::: speedtest.core.speedtest

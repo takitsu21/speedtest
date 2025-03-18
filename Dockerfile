@@ -2,7 +2,6 @@
 FROM python:3.13-slim
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
-
 RUN apt update -y \
     && apt install -y iputils-ping
 
@@ -19,8 +18,4 @@ RUN uv sync --frozen --no-install-project
 # Copy the project into the image
 ADD . /app
 
-# Sync the project
-RUN uv sync --frozen
-
-
-CMD [ "uv", "run", "python", "speedtest/main.py"]
+CMD [ "uv", "run", "speedtest/main.py"]
