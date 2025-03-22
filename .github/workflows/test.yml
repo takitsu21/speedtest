@@ -1,4 +1,4 @@
-name: test
+name: Running unit tests
 
 on:
   push:
@@ -43,4 +43,4 @@ jobs:
 
       - name: Run tests
         run: |
-          uv run python -m pytest --doctest-modules tests --cov --cov-config=pyproject.toml --cov-report=xml
+          uv run pytest --doctest-modules tests --cov --cov-config=pyproject.toml --cov-report=xml

@@ -8,14 +8,13 @@ repo_name: takitsu21/speedtest
 copyright: Maintained by <a href="https://takitsu21.com">takitsu21</a>.
 
 nav:
-  - Home: index.md
-  - Modules: modules.md
+  - Getting started: index.md
 plugins:
   - search
   - mkdocstrings:
       handlers:
         python:
-          paths: [speedtest]
+          paths: [speedtest_cloudflare_cli]
 theme:
   name: material
   feature:

@@ -1,4 +1,4 @@
-name: Build and Push docker registries
+name: Build, publish to PyPI, and deploy to Docker Hub and GitHub Container Registry
 
 on:
   push:
@@ -6,8 +6,14 @@ on:
       - "v*.*.*" # Triggers the workflow on version tags like v1.2.3
 
 jobs:
-  publish-pypi:
+  build-publish-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
+
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -24,18 +30,6 @@ jobs:
           UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         run: |
           uv publish
-
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
-      attestations: write
-      id-token: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
 
       # Log in to GitHub Container Registry
       - name: Log in to GHCR
