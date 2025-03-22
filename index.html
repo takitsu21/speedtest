@@ -16,8 +16,6 @@
       
       
       
-        <link rel="next" href="modules/">
-      
       
       <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
@@ -78,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#speedtest" class="md-skip">
+        <a href="#speedtest-cli" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Getting started
             
           </span>
         </div>
@@ -266,38 +264,132 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Home
+    Getting started
     
   </span>
   
 
       </a>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="modules/" class="md-nav__link">
         
-  
-  <span class="md-ellipsis">
-    Modules
-    
-  </span>
-  
 
-      </a>
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-pipx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using pipx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using uv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using pip
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-in-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running in a container
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running in a container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-podman" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Podman
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Docker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -322,6 +414,98 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-pipx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using pipx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using uv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using pip
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-in-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running in a container
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running in a container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-podman" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Podman
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Docker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -339,12 +523,48 @@
   
 
 
-<h1 id="speedtest">speedtest<a class="headerlink" href="#speedtest" title="Permanent link">&para;</a></h1>
-<p><a href="https://img.shields.io/github/v/release/takitsu21/speedtest"><img alt="Release" src="https://img.shields.io/github/v/release/takitsu21/speedtest" /></a>
-<a href="https://github.com/takitsu21/speedtest/actions/workflows/main.yml?query=branch%3Amain"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/takitsu21/speedtest/main.yml?branch=main" /></a>
+<h1 id="speedtest-cli">speedtest-cli<a class="headerlink" href="#speedtest-cli" title="Permanent link">&para;</a></h1>
+<p><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/speedtest-cli-cloudlfare" />
+<a href="https://img.shields.io/github/v/release/takitsu21/speedtest"><img alt="Release" src="https://img.shields.io/github/v/release/takitsu21/speedtest" /></a>
+<a href="https://github.com/takitsu21/speedtest/actions/workflows/test.yml"><img alt="test" src="https://github.com/takitsu21/speedtest/actions/workflows/test.yml/badge.svg?branch=main" /></a>
+<a href="https://github.com/takitsu21/speedtest/actions/workflows/main.yml?query=branch%3Amain"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/takitsu21/speedtest/deploy.yml?branch=main" /></a>
 <a href="https://img.shields.io/github/commit-activity/m/takitsu21/speedtest"><img alt="Commit activity" src="https://img.shields.io/github/commit-activity/m/takitsu21/speedtest" /></a>
 <a href="https://img.shields.io/github/license/takitsu21/speedtest"><img alt="License" src="https://img.shields.io/github/license/takitsu21/speedtest" /></a></p>
 <p>Speed CLI tool to test your network connectivity</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>I strongly recommend to use <a href="https://github.com/pypa/pipx/tree/main">pipx</a> or <a href="https://github.com/astral-sh/uv">uv</a> to install this tool.
+These tools will install the package in an isolated environment and will not interfere with your system packages.</p>
+<h3 id="using-pipx">Using pipx<a class="headerlink" href="#using-pipx" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash">pipx install speedtest-cloudflare-cli
+</code></pre>
+<h3 id="using-uv">Using uv<a class="headerlink" href="#using-uv" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash">uv tool install speedtest-cloudflare-cli
+</code></pre>
+<h3 id="using-pip">Using pip<a class="headerlink" href="#using-pip" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>[!WARNING]</p>
+<p>It is not recommended to install this package using pip. It will install the package in your system packages and may interfere with other packages.</p>
+</blockquote>
+<pre><code class="language-bash">pip install speedtest-cloudflare-cli
+</code></pre>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>Run the following command to test your internet speed.</p>
+<pre><code class="language-bash">speedtest-cli
+</code></pre>
+<p>For more information, run the --help command.</p>
+<pre><code class="language-bash">speedtest-cli --help
+</code></pre>
+<h2 id="running-in-a-container">Running in a container<a class="headerlink" href="#running-in-a-container" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>[!WARNING]</p>
+<p>You may encounter permission issues when running the container due to ping and other network commands. To avoid this, you can run the container with the <code>--privileged</code> flag.</p>
+</blockquote>
+<h3 id="using-podman">Using Podman<a class="headerlink" href="#using-podman" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash">podman run --rm -it takizz21/speedtest:latest
+</code></pre>
+<h3 id="using-docker">Using Docker<a class="headerlink" href="#using-docker" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash">docker run --rm -it takizz21/speedtest:latest
+</code></pre>
 
 
 
