@@ -48,7 +48,7 @@ class SpeedTest:
     def _download(self):
         return client().get(f"{self.url}/__down", params={"bytes": self.download_size})
 
-    def _update_progress(self, speed: int, jitter: int, bar: Any) -> None:
+    def _update_progress(self, speed: float, jitter: int, bar: Any) -> None:
         bar.text = f"Speed: {speed:.2f} Mbps  | Jitter: {jitter:.2f} ms"
         bar(speed)
 
@@ -69,7 +69,7 @@ class SpeedTest:
     def upload_latency(self):
         return self._http_latency(f"{self.url}/__up")
 
-    def ping(self) -> float:
+    def ping(self) -> None:
         # Determine the command parameters based on the OS
         param = "-n" if platform.system().lower() == "windows" else "-c"
         timeout_param = "-w" if platform.system().lower() == "windows" else "-W"
@@ -99,8 +99,6 @@ class SpeedTest:
                     self.latency = avg_latency / len(time_match.groups())
                 else:
                     rich.print(f"Ping successful, but unable to extract latency. => {output}")
-            else:
-                return None
 
         except FileNotFoundError:
             rich.print("Ping command not found. Ensure it is available on your system.")

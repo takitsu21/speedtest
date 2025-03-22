@@ -1,4 +1,4 @@
-from typing import Optional
+from __future__ import annotations
 
 import rich.table
 import rich_click as click
@@ -14,7 +14,7 @@ SPEEDTEST_URL = "https://speed.cloudflare.com/"
 
 
 def display_results(
-    download_result: Optional[result.Result], upload_result: Optional[result.Result], metadata: metadata.Metadata
+    download_result: result.Result | None, upload_result:result.Result | None, metadata: metadata.Metadata
 ) -> None:
     table = rich.table.Table(title="Speedtest Results", show_header=True, border_style="blue", title_style="bold")
     table.add_column("Metric", style="bold green")
@@ -22,7 +22,7 @@ def display_results(
     table.add_column("Upload", style="bold magenta")
 
     # Helper function to handle None values
-    def safe_value(result: result.Result, attr: str) -> str:
+    def safe_value(result: result.Result | None, attr: str ) -> str:
         result_attr = getattr(result, attr, None)
         if isinstance(result_attr, float):
             return f"{result_attr:.2f}"
