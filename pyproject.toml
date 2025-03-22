@@ -1,5 +1,5 @@
 [project]
-name = "speedtest"
+name = "speedtest-cloudflare-cli"
 version = "0.0.1"
 description = "Speed CLI tool to test your network connectivity"
 authors = [{ name = "Dylann Batisse", email = "dylann.batisse@protonmail.com" }]
@@ -119,7 +119,7 @@ preview = true
 
 [tool.coverage.report]
 skip_empty = true
-fail_under = 47
+fail_under = 50
 
 [tool.coverage.run]
 branch = true
