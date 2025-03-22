@@ -15,7 +15,6 @@ def my_speedtest_object(mocker: MockerFixture) -> speedtest.SpeedTest:
     return my_speedtest
 
 
-
 @unittest.mock.patch("threading.Thread")
 def test_init(mock_thread):
     # Test the initialization of the SpeedTest object
@@ -55,7 +54,10 @@ def test_download(mock_client, my_speedtest_object, mocker: MockerFixture):
     mock_client.assert_called_once()
     mock_client.assert_called_with()
     mock_client.return_value.get.assert_called_once()
-    mock_client.return_value.get.assert_called_with(f"{my_speedtest_object.url}/__down", params={"bytes": my_speedtest_object.download_size})
+    mock_client.return_value.get.assert_called_with(
+        f"{my_speedtest_object.url}/__down", params={"bytes": my_speedtest_object.download_size}
+    )
+
 
 def test_update_progress(my_speedtest_object, mocker: MockerFixture):
     # Test the update progress method
@@ -65,9 +67,11 @@ def test_update_progress(my_speedtest_object, mocker: MockerFixture):
     bar.assert_called_with(10)
     assert bar.text == "Speed: 10.00 Mbps  | Jitter: 20.00 ms"
 
+
 def test_data_blocks(my_speedtest_object):
     data_blocks = my_speedtest_object.data_blocks
     assert data_blocks == b"0" * my_speedtest_object.upload_size
+
 
 @unittest.mock.patch("time.perf_counter")
 @unittest.mock.patch("speedtest_cloudflare_cli.core.speedtest.client")
@@ -96,16 +100,19 @@ def test_http_latency(mock_client, mock_perf_counter, my_speedtest_object):
     mock_client.return_value.head.assert_called_with("my_url", params={"bytes": 0})
     assert response == 1000
 
+
 def test_download_latency(my_speedtest_object, mocker: MockerFixture):
     # Test the download latency property
     mocker.patch("speedtest_cloudflare_cli.core.speedtest.SpeedTest._http_latency", return_value=1000)
     response = my_speedtest_object.download_latency
     assert response == 1000
 
+
 def test_upload_latency(my_speedtest_object, mocker: MockerFixture):
     mocker.patch("speedtest_cloudflare_cli.core.speedtest.SpeedTest._http_latency", return_value=1000)
     response = my_speedtest_object.upload_latency
     assert response == 1000
+
 
 def test_ping(my_speedtest_object, mocker: MockerFixture):
     # Test the ping method

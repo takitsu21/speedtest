@@ -8,14 +8,14 @@ from speedtest_cloudflare_cli.core import speedtest
 from speedtest_cloudflare_cli.models import metadata, result
 
 CHUNK_SIZE = 1024 * 1024  # 1MB
-DOWNLOAD_SIZE = CHUNK_SIZE * 50  # 50MB
-UPLOAD_SIZE = CHUNK_SIZE * 50  # 50MB
+DOWNLOAD_SIZE = 50  # 50MB
+UPLOAD_SIZE = 50  # 50MB
 
 SPEEDTEST_URL = "https://speed.cloudflare.com/"
 
 
 def display_results(
-    download_result: result.Result | None, upload_result:result.Result | None, metadata: metadata.Metadata
+    download_result: result.Result | None, upload_result: result.Result | None, metadata: metadata.Metadata
 ) -> None:
     table = rich.table.Table(title="Speedtest Results", show_header=True, border_style="blue", title_style="bold")
     table.add_column("Metric", style="bold green")
@@ -23,7 +23,7 @@ def display_results(
     table.add_column("Upload", style="bold magenta")
 
     # Helper function to handle None values
-    def safe_value(result: result.Result | None, attr: str ) -> str:
+    def safe_value(result: result.Result | None, attr: str) -> str:
         result_attr = getattr(result, attr, None)
         if isinstance(result_attr, float):
             return f"{result_attr:.2f}"
@@ -70,13 +70,17 @@ def display_results(
 @click.option("--upload_size", "-us", type=int, default=UPLOAD_SIZE, help="Upload size in MB")
 @click.option("--attempts", "-a", type=int, default=5, help="Number of attempts")
 def main(*, download: bool, upload: bool, download_size: int, upload_size: int, attempts: int) -> None:
-    speedtester = speedtest.SpeedTest(url=SPEEDTEST_URL, download_size=download_size, upload_size=upload_size, attempts=attempts)
+    download_size = download_size * CHUNK_SIZE
+    upload_size = upload_size * CHUNK_SIZE
+    speedtester = speedtest.SpeedTest(
+        url=SPEEDTEST_URL, download_size=download_size, upload_size=upload_size, attempts=attempts
+    )
     download_result = None
     upload_result = None
     if download:
         download_result = speedtester.download_speed()
     if upload:
-        upload_result = speedtester.download_speed()
+        upload_result = speedtester.upload_speed()
     if not download and not upload:
         download_result = speedtester.download_speed()
         upload_result = speedtester.upload_speed()
