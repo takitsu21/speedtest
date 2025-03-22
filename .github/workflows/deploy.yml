@@ -2,8 +2,8 @@ name: Build and Push docker registries
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*.*.*" # Triggers the workflow on version tags like v1.2.3
 
 jobs:
   build-and-deploy:
