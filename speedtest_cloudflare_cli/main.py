@@ -1,10 +1,11 @@
+#!/usr/bin/env python
 from __future__ import annotations
 
 import rich.table
 import rich_click as click
 
-from speedtest.core import speedtest
-from speedtest.models import metadata, result
+from speedtest_cloudflare_cli.core import speedtest
+from speedtest_cloudflare_cli.models import metadata, result
 
 CHUNK_SIZE = 1024 * 1024  # 1MB
 DOWNLOAD_SIZE = CHUNK_SIZE * 50  # 50MB

@@ -1,22 +1,17 @@
 import contextlib
 import functools
-import platform
-import re
-import shutil
-import subprocess
 import threading
 import time
-import urllib
-import urllib.parse
 from collections.abc import Generator
 from typing import Any, Callable
 
 import httpx
+import ping3
 import rich
 import rich.table
 from alive_progress import alive_bar
 
-from speedtest.models import metadata, result
+from speedtest_cloudflare_cli.models import metadata, result
 
 
 @functools.cache
@@ -70,38 +65,12 @@ class SpeedTest:
         return self._http_latency(f"{self.url}/__up")
 
     def ping(self) -> None:
-        # Determine the command parameters based on the OS
-        param = "-n" if platform.system().lower() == "windows" else "-c"
-        timeout_param = "-w" if platform.system().lower() == "windows" else "-W"
-
         try:
-            ping_cmd = shutil.which("ping")
-            result = subprocess.run(  # noqa: S603
-                [ping_cmd, param, "3", timeout_param, "3", urllib.parse.urlparse(self.url).hostname],
-                capture_output=True,
-                text=True,
-            )
-
-            if result.returncode == 0:
-                # Extract the time from the output
-                output = result.stdout
-                if platform.system().lower() == "windows":
-                    # Parse the latency line for Windows
-                    time_match = re.search(r"Average = (\d+)ms", output)
-                else:
-                    # Parse the latency line for Linux/Mac
-                    time_match = re.search(r"time=(\d+\.?\d*) ms", output)
-
-                if time_match:
-                    avg_latency = 0
-                    for match in time_match.groups():
-                        avg_latency += float(match)
-                    self.latency = avg_latency / len(time_match.groups())
-                else:
-                    rich.print(f"Ping successful, but unable to extract latency. => {output}")
-
-        except FileNotFoundError:
-            rich.print("Ping command not found. Ensure it is available on your system.")
+            ping = ping3.ping("google.com", unit="ms")
+            self.latency = ping if ping else "N/A"
+        except ping3.errors.PingError as e:
+            rich.print(f"Unable to ping the server. => {e}")
+            self.latency = "N/A"
 
     def _upload(self):
         return client().post(f"{self.url}/__up", data=self.data_blocks)

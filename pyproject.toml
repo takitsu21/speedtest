@@ -1,6 +1,6 @@
 [project]
 name = "speedtest-cloudflare-cli"
-version = "0.0.1"
+dynamic = ["version"]
 description = "Speed CLI tool to test your network connectivity"
 authors = [{ name = "Dylann Batisse", email = "dylann.batisse@protonmail.com" }]
 readme = "README.md"
@@ -20,6 +20,7 @@ classifiers = [
 dependencies = [
     "alive-progress>=3.2.0",
     "httpx>=0.28.0",
+    "ping3>=4.0.8",
     "pydantic>=2.10.3",
     "rich>=13.9.4",
     "rich-click>=1.8.5",
@@ -46,11 +47,11 @@ dev-dependencies = [
 ]
 
 [build-system]
-requires = ["setuptools >= 61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "versioningit"]
+build-backend = "hatchling.build"
 
-[tool.setuptools]
-py-modules = ["speedtest"]
+[project.scripts]
+speedtest-cli = "speedtest_cloudflare_cli.main:main"
 
 [tool.mypy]
 files = ["speedtest"]
@@ -124,3 +125,6 @@ fail_under = 50
 [tool.coverage.run]
 branch = true
 source = ["speedtest"]
+
+[tool.hatch.version]
+source = "versioningit"

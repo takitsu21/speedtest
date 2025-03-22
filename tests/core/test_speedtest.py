@@ -1,10 +1,11 @@
 import unittest
 import unittest.mock
 
+import ping3
 import pytest
 from pytest_mock import MockerFixture
 
-from speedtest.core import speedtest
+from speedtest_cloudflare_cli.core import speedtest
 
 
 @pytest.fixture
@@ -48,7 +49,7 @@ def test_wait(my_speedtest_object, mocker: MockerFixture):
     my_speedtest_object._ping_thread.join.assert_not_called()
 
 
-@unittest.mock.patch("speedtest.core.speedtest.client")
+@unittest.mock.patch("speedtest_cloudflare_cli.core.speedtest.client")
 def test_download(mock_client, my_speedtest_object, mocker: MockerFixture):
     my_speedtest_object._download()
     mock_client.assert_called_once()
@@ -69,7 +70,7 @@ def test_data_blocks(my_speedtest_object):
     assert data_blocks == b"0" * my_speedtest_object.upload_size
 
 @unittest.mock.patch("time.perf_counter")
-@unittest.mock.patch("speedtest.core.speedtest.client")
+@unittest.mock.patch("speedtest_cloudflare_cli.core.speedtest.client")
 def test_http_latency(mock_client, mock_perf_counter, my_speedtest_object):
     # Test the http latency method
     mock_perf_counter.side_effect = [1, 2]
@@ -97,81 +98,40 @@ def test_http_latency(mock_client, mock_perf_counter, my_speedtest_object):
 
 def test_download_latency(my_speedtest_object, mocker: MockerFixture):
     # Test the download latency property
-    mocker.patch("speedtest.core.speedtest.SpeedTest._http_latency", return_value=1000)
+    mocker.patch("speedtest_cloudflare_cli.core.speedtest.SpeedTest._http_latency", return_value=1000)
     response = my_speedtest_object.download_latency
     assert response == 1000
 
 def test_upload_latency(my_speedtest_object, mocker: MockerFixture):
-    mocker.patch("speedtest.core.speedtest.SpeedTest._http_latency", return_value=1000)
+    mocker.patch("speedtest_cloudflare_cli.core.speedtest.SpeedTest._http_latency", return_value=1000)
     response = my_speedtest_object.upload_latency
     assert response == 1000
 
 def test_ping(my_speedtest_object, mocker: MockerFixture):
-    # Test the ping method with a Windows system
-    mock_system = mocker.patch("platform.system", return_value="Windows")
-    mock_shutil_ping = mocker.patch("shutil.which", return_value="ping")
-    mock_subprocess = mocker.patch("subprocess.run", return_value=unittest.mock.Mock(returncode=0, stdout="Average = 100ms"))
-    mock_urllib_parse = mocker.patch("urllib.parse.urlparse", return_value=unittest.mock.Mock(hostname="my_url"))
-    mock_re_search = mocker.patch("re.search")
-    mock_re_search.return_value.groups.return_value = ["100"]
-    mock_rich_print = mocker.patch("rich.print")
+    # Test the ping method
+    mock_ping = mocker.patch("ping3.ping", return_value=20.0)
+    mock_rich = mocker.patch("rich.print")
     my_speedtest_object.ping()
-    assert mock_system.call_count == 3
-    assert mock_system.call_args_list == [unittest.mock.call(), unittest.mock.call(), unittest.mock.call()]
-    mock_shutil_ping.assert_called_once()
-    mock_shutil_ping.assert_called_with("ping")
-    mock_urllib_parse.assert_called_once()
-    mock_urllib_parse.assert_called_with("my_url")
-    mock_subprocess.assert_called_once()
-    mock_subprocess.assert_called_with(["ping", "-n", "3", "-w", "3", "my_url"], capture_output=True, text=True)
-    mock_re_search.assert_called_once()
-    mock_re_search.assert_called_with(r"Average = (\d+)ms", "Average = 100ms")
-    assert mock_rich_print.call_count == 0
+    mock_ping.assert_called_once()
+    mock_ping.assert_called_with("google.com", unit="ms")
+    mock_rich.assert_not_called()
+    assert my_speedtest_object.latency == 20.0
 
-
-    # Test the ping method with a Linux system
+    # Test the ping method with None value
     mocker.resetall()
-    mock_system.return_value = "Linux"
-    mock_shutil_ping.return_value = "/usr/bin/ping"
+    mock_ping.return_value = None
     my_speedtest_object.ping()
-    assert mock_system.call_count == 3
-    assert mock_system.call_args_list == [unittest.mock.call(), unittest.mock.call(), unittest.mock.call()]
-    mock_shutil_ping.assert_called_once()
-    mock_shutil_ping.assert_called_with("ping")
-    mock_urllib_parse.assert_called_once()
-    mock_urllib_parse.assert_called_with("my_url")
-    mock_subprocess.assert_called_once()
-    mock_subprocess.assert_called_with(["/usr/bin/ping", "-c", "3", "-W", "3", "my_url"], capture_output=True, text=True)
-    mock_re_search.assert_called_once()
-    mock_re_search.assert_called_with(r"time=(\d+\.?\d*) ms", "Average = 100ms")
-    assert mock_rich_print.call_count == 0
+    mock_ping.assert_called_once()
+    mock_ping.assert_called_with("google.com", unit="ms")
+    mock_rich.assert_not_called()
+    assert my_speedtest_object.latency == "N/A"
 
-    # Test the ping method with a Linux system and no latency
+    # Test the ping method with exception
     mocker.resetall()
-    mock_system.return_value = "Linux"
-    mock_shutil_ping.return_value = "/usr/bin/ping"
-    mock_re_search.return_value = None
-    mock_subprocess.return_value.stdout = "Hostname not available"
+    mock_ping.side_effect = ping3.errors.PingError("error")
     my_speedtest_object.ping()
-    assert mock_system.call_count == 3
-    assert mock_system.call_args_list == [unittest.mock.call(), unittest.mock.call(), unittest.mock.call()]
-    mock_shutil_ping.assert_called_once()
-    mock_shutil_ping.assert_called_with("ping")
-    mock_urllib_parse.assert_called_once()
-    mock_urllib_parse.assert_called_with("my_url")
-    mock_subprocess.assert_called_once()
-    mock_subprocess.assert_called_with(["/usr/bin/ping", "-c", "3", "-W", "3", "my_url"], capture_output=True, text=True)
-    mock_re_search.assert_called_once()
-    mock_rich_print.assert_called_once()
-    mock_rich_print.assert_called_with("Ping successful, but unable to extract latency. => Hostname not available")
-
-    # Test the ping method with a missing ping command
-    mocker.resetall()
-    mock_shutil_ping.side_effect = FileNotFoundError("Ping command not found")
-    my_speedtest_object.ping()
-    assert mock_system.call_count == 2
-    assert mock_system.call_args_list == [unittest.mock.call(), unittest.mock.call()]
-    mock_shutil_ping.assert_called_once()
-    mock_shutil_ping.assert_called_with("ping")
-    mock_rich_print.assert_called_once()
-    mock_rich_print.assert_called_with("Ping command not found. Ensure it is available on your system.")
+    mock_ping.assert_called_once()
+    mock_ping.assert_called_with("google.com", unit="ms")
+    mock_rich.assert_called_once()
+    mock_rich.assert_called_with("Unable to ping the server. => error")
+    assert my_speedtest_object.latency == "N/A"
