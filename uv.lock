@@ -775,6 +775,15 @@ wheels = [
 ]
 
 [[package]]
+name = "ping3"
+version = "4.0.8"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/20/75/31ad8e1e466caeed891c39275be21d585b1490af1f4e5d747d4e45b54e9d/ping3-4.0.8.tar.gz", hash = "sha256:9ab460eb57f006b71f977a693d157215aabd6bbcbc6cd6428b6951eaae0c2875", size = 17826 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e6/f4/4070daca3da5bbc3ef5e622d68f979e034e5bf678416817918e51a1b2907/ping3-4.0.8-py3-none-any.whl", hash = "sha256:b5c294851968b4229e9af69d252778241cb84221594b436a8677419c31925594", size = 14007 },
+]
+
+[[package]]
 name = "platformdirs"
 version = "4.3.7"
 source = { registry = "https://pypi.org/simple" }
@@ -1183,11 +1192,11 @@ wheels = [
 
 [[package]]
 name = "speedtest-cloudflare-cli"
-version = "0.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "alive-progress" },
     { name = "httpx" },
+    { name = "ping3" },
     { name = "pydantic" },
     { name = "rich" },
     { name = "rich-click" },
@@ -1212,6 +1221,7 @@ dev = [
 requires-dist = [
     { name = "alive-progress", specifier = ">=3.2.0" },
     { name = "httpx", specifier = ">=0.28.0" },
+    { name = "ping3", specifier = ">=4.0.8" },
     { name = "pydantic", specifier = ">=2.10.3" },
     { name = "rich", specifier = ">=13.9.4" },
     { name = "rich-click", specifier = ">=1.8.5" },
