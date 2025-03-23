@@ -524,10 +524,11 @@
 
 
 <h1 id="speedtest-cli">speedtest-cli<a class="headerlink" href="#speedtest-cli" title="Permanent link">&para;</a></h1>
-<p><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/speedtest-cli-cloudlfare" />
+<p><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/speedtest-cloudflare-cli" />
+<img alt="PyPI - Version" src="https://img.shields.io/pypi/v/speedtest-cloudflare-cli" />
 <a href="https://img.shields.io/github/v/release/takitsu21/speedtest"><img alt="Release" src="https://img.shields.io/github/v/release/takitsu21/speedtest" /></a>
 <a href="https://github.com/takitsu21/speedtest/actions/workflows/test.yml"><img alt="test" src="https://github.com/takitsu21/speedtest/actions/workflows/test.yml/badge.svg?branch=main" /></a>
-<a href="https://github.com/takitsu21/speedtest/actions/workflows/main.yml?query=branch%3Amain"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/takitsu21/speedtest/deploy.yml?branch=main" /></a>
+<a href="https://github.com/takitsu21/speedtest/actions/workflows/deploy.yml"><img alt="build" src="https://github.com/takitsu21/speedtest/actions/workflows/deploy.yml/badge.svg" /></a>
 <a href="https://img.shields.io/github/commit-activity/m/takitsu21/speedtest"><img alt="Commit activity" src="https://img.shields.io/github/commit-activity/m/takitsu21/speedtest" /></a>
 <a href="https://img.shields.io/github/license/takitsu21/speedtest"><img alt="License" src="https://img.shields.io/github/license/takitsu21/speedtest" /></a></p>
 <p>Speed CLI tool to test your network connectivity</p>
@@ -551,19 +552,21 @@ These tools will install the package in an isolated environment and will not int
 <p>Run the following command to test your internet speed.</p>
 <pre><code class="language-bash">speedtest-cli
 </code></pre>
+<p><img alt="Speedtest output" src="../img/speedtest_output.png" /></p>
 <p>For more information, run the --help command.</p>
 <pre><code class="language-bash">speedtest-cli --help
 </code></pre>
+<p><img alt="Help output" src="../img/help.png" /></p>
 <h2 id="running-in-a-container">Running in a container<a class="headerlink" href="#running-in-a-container" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>[!WARNING]</p>
-<p>You may encounter permission issues when running the container due to ping and other network commands. To avoid this, you can run the container with the <code>--privileged</code> flag.</p>
+<p>You may encounter permission issues when running the container due to ping command. To avoid this, you can run the container with the <code>-u 0:0</code> flag.</p>
 </blockquote>
 <h3 id="using-podman">Using Podman<a class="headerlink" href="#using-podman" title="Permanent link">&para;</a></h3>
-<pre><code class="language-bash">podman run --rm -it takizz21/speedtest:latest
+<pre><code class="language-bash">podman run --rm -it -u 0:0 takizz21/speedtest:latest
 </code></pre>
 <h3 id="using-docker">Using Docker<a class="headerlink" href="#using-docker" title="Permanent link">&para;</a></h3>
-<pre><code class="language-bash">docker run --rm -it takizz21/speedtest:latest
+<pre><code class="language-bash">docker run --rm -it -u 0:0 takizz21/speedtest:latest
 </code></pre>
 
 
