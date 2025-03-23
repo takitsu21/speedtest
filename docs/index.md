@@ -10,7 +10,6 @@
 
 Speed CLI tool to test your network connectivity
 
-
 ## Installation
 
 I strongly recommend to use [pipx](https://github.com/pypa/pipx/tree/main) or [uv](https://github.com/astral-sh/uv) to install this tool.
@@ -43,14 +42,14 @@ Run the following command to test your internet speed.
 speedtest-cli
 ```
 
-![Speedtest output](../img/speedtest_output.png)
+![Speedtest output](assets/speedtest_output.png)
 
 For more information, run the --help command.
 ```bash
 speedtest-cli --help
 ```
 
-![Help output](../img/help.png)
+![Help output](assets/help.png)
 
 ## Running in a container
 
