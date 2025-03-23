@@ -78,6 +78,7 @@ class SpeedTest:
     def _compute_network_speed(self, bar: Any, size_to_process: int, func: Callable) -> result.Result:
         total_time = 0
         jitter = 0
+        speed_mbps = 0
         times_to_process = []
         jitters = []
         for attempt in range(1, self.attempts + 1):
@@ -106,7 +107,6 @@ class SpeedTest:
 
     def download_speed(self):
         rich.print("Running download test... 🚀")
-
         with track_progress() as bar:
             download_result = self._compute_network_speed(
                 bar=bar, size_to_process=self.download_size, func=self._download
