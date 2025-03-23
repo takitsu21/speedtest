@@ -1,9 +1,10 @@
 # speedtest-cli
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/speedtest-cli-cloudlfare)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/speedtest-cloudflare-cli)
+![PyPI - Version](https://img.shields.io/pypi/v/speedtest-cloudflare-cli)
 [![Release](https://img.shields.io/github/v/release/takitsu21/speedtest)](https://img.shields.io/github/v/release/takitsu21/speedtest)
 [![test](https://github.com/takitsu21/speedtest/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/takitsu21/speedtest/actions/workflows/test.yml)
-[![Build status](https://img.shields.io/github/actions/workflow/status/takitsu21/speedtest/deploy.yml?branch=main)](https://github.com/takitsu21/speedtest/actions/workflows/main.yml?query=branch%3Amain)
+[![build](https://github.com/takitsu21/speedtest/actions/workflows/deploy.yml/badge.svg)](https://github.com/takitsu21/speedtest/actions/workflows/deploy.yml)
 [![Commit activity](https://img.shields.io/github/commit-activity/m/takitsu21/speedtest)](https://img.shields.io/github/commit-activity/m/takitsu21/speedtest)
 [![License](https://img.shields.io/github/license/takitsu21/speedtest)](https://img.shields.io/github/license/takitsu21/speedtest)
 
@@ -42,25 +43,29 @@ Run the following command to test your internet speed.
 speedtest-cli
 ```
 
+![Speedtest output](../img/speedtest_output.png)
+
 For more information, run the --help command.
 ```bash
 speedtest-cli --help
 ```
 
+![Help output](../img/help.png)
+
 ## Running in a container
 
 > [!WARNING]
 >
-> You may encounter permission issues when running the container due to ping and other network commands. To avoid this, you can run the container with the `--privileged` flag.
+> You may encounter permission issues when running the container due to ping command. To avoid this, you can run the container with the `-u 0:0` flag.
 
 ### Using Podman
 
 ```bash
-podman run --rm -it takizz21/speedtest:latest
+podman run --rm -it -u 0:0 takizz21/speedtest:latest
 ```
 
 ### Using Docker
 
 ```bash
-docker run --rm -it takizz21/speedtest:latest
+docker run --rm -it -u 0:0 takizz21/speedtest:latest
 ```
