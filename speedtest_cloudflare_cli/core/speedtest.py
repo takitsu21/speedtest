@@ -16,7 +16,7 @@ from speedtest_cloudflare_cli.models import metadata, result
 
 @functools.cache
 def client() -> httpx.Client:
-    return httpx.Client(headers={"Connection": "Keep-Alive"})
+    return httpx.Client(headers={"Connection": "Keep-Alive"}, timeout=None)
 
 
 @contextlib.contextmanager
