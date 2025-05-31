@@ -8,7 +8,6 @@ from typing import Any, Callable
 import httpx
 import ping3
 import rich
-import rich.table
 from alive_progress import alive_bar
 
 from speedtest_cloudflare_cli.models import metadata, result
@@ -94,7 +93,8 @@ class SpeedTest:
             total_time += elapsed_time
             average_time = total_time / attempt
             speed_mbps = (size_to_process * 8) / (average_time * 1024 * 1024)
-            self._update_progress(bar=bar, speed=speed_mbps, jitter=jitter)
+            if bar:
+                self._update_progress(bar=bar, speed=speed_mbps, jitter=jitter)
 
         jitter = sum(jitters) / len(jitters) if jitters else times_to_process[-1]
         if not self.latency:
@@ -105,7 +105,11 @@ class SpeedTest:
         )
         return result.Result(speed=speed_mbps, jitter=jitter, latency=self.latency, http_latency=http_latency)
 
-    def download_speed(self):
+    def download_speed(self, silent: bool) -> result.Result:
+        if silent:
+            return self._compute_network_speed(
+                bar=None, size_to_process=self.download_size, func=self._download
+            )
         rich.print("Running download test... 🚀")
         with track_progress() as bar:
             download_result = self._compute_network_speed(
@@ -114,7 +118,9 @@ class SpeedTest:
 
         return download_result
 
-    def upload_speed(self) -> result.Result:
+    def upload_speed(self, silent: bool) -> result.Result:
+        if silent:
+            return self._compute_network_speed(bar=None, size_to_process=self.upload_size, func=self._upload)
         rich.print("Running upload test... 🚀")
         with track_progress() as bar:
             upload_result = self._compute_network_speed(bar, self.upload_size, self._upload)
