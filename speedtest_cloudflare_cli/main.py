@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from __future__ import annotations
 
+import rich.json
 import rich.table
 import rich_click as click
 
@@ -69,7 +70,8 @@ def display_results(
 @click.option("--download_size", "-ds", type=int, default=DOWNLOAD_SIZE, help="Download size in MB")
 @click.option("--upload_size", "-us", type=int, default=UPLOAD_SIZE, help="Upload size in MB")
 @click.option("--attempts", "-a", type=int, default=5, help="Number of attempts")
-def main(*, download: bool, upload: bool, download_size: int, upload_size: int, attempts: int) -> None:
+@click.option("--json", is_flag=True, help="Output results in JSON format")
+def main(*, download: bool, upload: bool, download_size: int, upload_size: int, attempts: int, json: bool) -> None:
     download_size = download_size * CHUNK_SIZE
     upload_size = upload_size * CHUNK_SIZE
     speedtester = speedtest.SpeedTest(
@@ -78,14 +80,24 @@ def main(*, download: bool, upload: bool, download_size: int, upload_size: int, 
     download_result = None
     upload_result = None
     if download:
-        download_result = speedtester.download_speed()
+        download_result = speedtester.download_speed(silent=json)
     if upload:
-        upload_result = speedtester.upload_speed()
+        upload_result = speedtester.upload_speed(silent=json)
     if not download and not upload:
-        download_result = speedtester.download_speed()
-        upload_result = speedtester.upload_speed()
+        download_result = speedtester.download_speed(silent=json)
+        upload_result = speedtester.upload_speed(silent=json)
 
-    display_results(download_result=download_result, upload_result=upload_result, metadata=speedtester.metadata)
+    if json:
+        results = {
+            "download": download_result.__dict__ if download_result else None,
+            "upload": upload_result.__dict__ if upload_result else None,
+            "metadata": speedtester.metadata.__dict__,
+        }
+        output = rich.json.JSON.from_data(results)
+        rich.print(output)
+        return
+    else:
+        display_results(download_result=download_result, upload_result=upload_result, metadata=speedtester.metadata)
 
 
 if __name__ == "__main__":
