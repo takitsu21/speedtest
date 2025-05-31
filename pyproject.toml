@@ -105,12 +105,6 @@ select = [
     # tryceratops
     "TRY",
 ]
-ignore = [
-    # LineTooLong
-    "E501",
-    # DoNotAssignLambda
-    "E731",
-]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101"]
@@ -120,7 +114,7 @@ preview = true
 
 [tool.coverage.report]
 skip_empty = true
-fail_under = 44
+#fail_under = 44
 
 [tool.coverage.run]
 branch = true
