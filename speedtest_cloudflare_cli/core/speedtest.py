@@ -1,27 +1,72 @@
 import contextlib
 import functools
+import re
+import socket
+import subprocess
 import threading
 import time
 from collections.abc import Generator
-from typing import Any, Callable
+from typing import Callable
 
 import httpx
 import ping3
-import rich
-from alive_progress import alive_bar
+from rich.progress import (
+    BarColumn,
+    DownloadColumn,
+    Progress,
+    TaskID,
+    TextColumn,
+    TimeRemainingColumn,
+    TransferSpeedColumn,
+)
 
 from speedtest_cloudflare_cli.models import metadata, result
+
+CHUNK_SIZE = 1024 * 1024
+PING_HOST = "google.com"
+PING_COUNT = 3
+PING_TIMEOUT = 3
 
 
 @functools.cache
 def client() -> httpx.Client:
-    return httpx.Client(headers={"Connection": "Keep-Alive"}, timeout=None) # noqa: S113
+    return httpx.Client(headers={"Connection": "Keep-Alive"}, timeout=None)  # noqa: S113
 
 
 @contextlib.contextmanager
-def track_progress() -> Generator[Any, None, None]:
-    with alive_bar(None, bar="smooth", spinner="pulse", force_tty=True) as bar:
-        yield bar
+def track_progress(silent: bool = False) -> Generator[Progress, None, None]:
+    with Progress(
+        TextColumn("{task.description}"),
+        BarColumn(bar_width=None),
+        DownloadColumn(),
+        TransferSpeedColumn(),
+        TimeRemainingColumn(),
+        disable=silent,
+    ) as progress:
+        yield progress
+
+
+def _fallback_ping() -> float | str:
+    # Try system ping
+    try:
+        out = subprocess.check_output(
+            ["ping", "-c", str(PING_COUNT), "-W", str(PING_TIMEOUT), PING_HOST],
+            stderr=subprocess.DEVNULL,
+            text=True,
+        )
+        m = re.search(r"time=([\d.]+)\s*ms", out)
+        if m:
+            return float(m.group(1))
+    except subprocess.CalledProcessError:
+        pass
+
+    # Fallback to TCP latency
+    try:
+        start = time.perf_counter()
+        with socket.create_connection((PING_HOST, 443), PING_TIMEOUT):
+            return (time.perf_counter() - start) * 1000
+    except OSError:
+        return "N/A"
 
 
 class SpeedTest:
@@ -39,50 +84,61 @@ class SpeedTest:
         if self._ping_thread.is_alive():
             self._ping_thread.join()
 
-    def _download(self):
-        return client().get(f"{self.url}/__down", params={"bytes": self.download_size})
-
-    def _update_progress(self, speed: float, jitter: int, bar: Any) -> None:
-        bar.text = f"Speed: {speed:.2f} Mbps  | Jitter: {jitter:.2f} ms"
-        bar(speed)
+    def _download(self, progress: Progress | None = None, task: TaskID | None = None):
+        """Download data in streaming chunks to keep the HTTP connection alive."""
+        with client().stream("GET", f"{self.url}/__down", params={"bytes": self.download_size}) as response:
+            # Consume the body in chunks so the server keeps feeding data.
+            for chunk in response.iter_bytes(chunk_size=CHUNK_SIZE):
+                if progress and task is not None:
+                    progress.update(task, description="Downloading... 🚀", advance=len(chunk))
 
     @functools.cached_property
     def data_blocks(self):
         return b"0" * self.upload_size
 
-    def _http_latency(self, url: str, **kwargs):
+    def _http_latency(self, **kwargs):
         start = time.perf_counter()
-        client().head(url, **kwargs)
+        client().head(f"https://{PING_HOST}", **kwargs)
         return (time.perf_counter() - start) * 1000
 
-    @property
-    def download_latency(self):
-        return self._http_latency(f"{self.url}/__down", params={"bytes": 0})
-
-    @property
-    def upload_latency(self):
-        return self._http_latency(f"{self.url}/__up")
 
     def ping(self) -> None:
         try:
-            ping = ping3.ping("google.com", unit="ms")
-            self.latency = ping if ping else "N/A"
-        except ping3.errors.PingError as e:
-            rich.print(f"Unable to ping the server. => {e}")
-            self.latency = "N/A"
+            self.latency = ping3.ping(PING_HOST, unit="ms", timeout=PING_TIMEOUT)
+        except (ping3.errors.PingError, PermissionError):
+            self.latency = _fallback_ping()
 
-    def _upload(self):
-        return client().post(f"{self.url}/__up", data=self.data_blocks)
+    def _upload(
+        self,
+        progress: Progress | None = None,
+        task: TaskID | None = None,
+    ) -> None:
+        """Upload data in streaming chunks to keep the HTTP connection alive and update progress."""
 
-    def _compute_network_speed(self, bar: Any, size_to_process: int, func: Callable) -> result.Result:
-        total_time = 0
+        def data_stream():
+            offset = 0
+            while offset < self.upload_size:
+                chunk = self.data_blocks[offset : offset + CHUNK_SIZE]
+                offset += len(chunk)
+                if progress and task is not None:
+                    progress.update(task, description="Uploading... 🚀", advance=len(chunk))
+                yield chunk
+
+        # httpx will read the iterator lazily and stream the request body
+        with client().stream("POST", f"{self.url}/__up", data=data_stream()) as _response:
+            # No need to consume the response body; the context manager ensures the
+            # request completes and the connection is released.
+            pass
+
+    def _compute_network_speed(self, progress: Progress, size_to_process: int, func: Callable) -> result.Result:
         jitter = 0
-        speed_mbps = 0
         times_to_process = []
         jitters = []
-        for attempt in range(1, self.attempts + 1):
+        if progress:
+            task = progress.add_task("", total=size_to_process * self.attempts)
+        for _ in range(self.attempts):
             start = time.perf_counter()
-            func()
+            func(progress, task)  # perform full transfer for this attempt
             elapsed_time = time.perf_counter() - start
             times_to_process.append(elapsed_time)
 
@@ -90,40 +146,28 @@ class SpeedTest:
                 jitter = abs(times_to_process[-1] - times_to_process[-2])
                 jitters.append(jitter)
 
-            total_time += elapsed_time
-            average_time = total_time / attempt
-            speed_mbps = (size_to_process * 8) / (average_time * 1024 * 1024)
-            if bar:
-                self._update_progress(bar=bar, speed=speed_mbps, jitter=jitter)
-
         jitter = sum(jitters) / len(jitters) if jitters else times_to_process[-1]
+
+        http_latency = self._http_latency()
+        speed = progress.tasks[task].speed * 8 / 1_000_000
+
+        # wait for ping to finish
         if not self.latency:
             self._wait()
 
-        http_latency = (
-            self.download_latency if getattr(func, "__name__", "_download") == "_download" else self.upload_latency
-        )
-        return result.Result(speed=speed_mbps, jitter=jitter, latency=self.latency, http_latency=http_latency)
+        return result.Result(speed=speed, jitter=jitter, latency=self.latency, http_latency=http_latency)
 
     def download_speed(self, silent: bool) -> result.Result:
-        if silent:
-            return self._compute_network_speed(
-                bar=None, size_to_process=self.download_size, func=self._download
-            )
-        rich.print("Running download test... 🚀")
-        with track_progress() as bar:
+        with track_progress(silent=silent) as progress:
             download_result = self._compute_network_speed(
-                bar=bar, size_to_process=self.download_size, func=self._download
+                progress=progress, size_to_process=self.download_size, func=self._download
             )
 
         return download_result
 
     def upload_speed(self, silent: bool) -> result.Result:
-        if silent:
-            return self._compute_network_speed(bar=None, size_to_process=self.upload_size, func=self._upload)
-        rich.print("Running upload test... 🚀")
-        with track_progress() as bar:
-            upload_result = self._compute_network_speed(bar, self.upload_size, self._upload)
+        with track_progress(silent=silent) as progress:
+            upload_result = self._compute_network_speed(progress, self.upload_size, self._upload)
 
         return upload_result
 

@@ -8,7 +8,6 @@ import rich_click as click
 from speedtest_cloudflare_cli.core import speedtest
 from speedtest_cloudflare_cli.models import metadata, result
 
-CHUNK_SIZE = 1024 * 1024  # 1MB
 DOWNLOAD_SIZE = 50  # 50MB
 UPLOAD_SIZE = 50  # 50MB
 
@@ -72,8 +71,8 @@ def display_results(
 @click.option("--attempts", "-a", type=int, default=5, help="Number of attempts")
 @click.option("--json", is_flag=True, help="Output results in JSON format")
 def main(*, download: bool, upload: bool, download_size: int, upload_size: int, attempts: int, json: bool) -> None:
-    download_size = download_size * CHUNK_SIZE
-    upload_size = upload_size * CHUNK_SIZE
+    download_size = download_size * speedtest.CHUNK_SIZE
+    upload_size = upload_size * speedtest.CHUNK_SIZE
     speedtester = speedtest.SpeedTest(
         url=SPEEDTEST_URL, download_size=download_size, upload_size=upload_size, attempts=attempts
     )
