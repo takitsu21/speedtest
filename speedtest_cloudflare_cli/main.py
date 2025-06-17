@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 from __future__ import annotations
 
+import json as _json
+import sys
+from pathlib import Path
+
 import rich.json
 import rich.table
 import rich_click as click
@@ -8,7 +12,6 @@ import rich_click as click
 from speedtest_cloudflare_cli.core import speedtest
 from speedtest_cloudflare_cli.models import metadata, result
 
-CHUNK_SIZE = 1024 * 1024  # 1MB
 DOWNLOAD_SIZE = 50  # 50MB
 UPLOAD_SIZE = 50  # 50MB
 
@@ -71,34 +74,48 @@ def display_results(
 @click.option("--upload_size", "-us", type=int, default=UPLOAD_SIZE, help="Upload size in MB")
 @click.option("--attempts", "-a", type=int, default=5, help="Number of attempts")
 @click.option("--json", is_flag=True, help="Output results in JSON format")
-def main(*, download: bool, upload: bool, download_size: int, upload_size: int, attempts: int, json: bool) -> None:
-    download_size = download_size * CHUNK_SIZE
-    upload_size = upload_size * CHUNK_SIZE
+@click.option("--silent", is_flag=True, help="Run in silent mode")
+@click.option("--json-output", type=click.Path(writable=True), default=None, help="Save JSON results to file")
+def main(
+    *,
+    download: bool,
+    upload: bool,
+    download_size: int,
+    upload_size: int,
+    attempts: int,
+    json: bool,
+    silent: bool,
+    json_output: str,
+) -> None:
+    download_size = download_size * speedtest.CHUNK_SIZE
+    upload_size = upload_size * speedtest.CHUNK_SIZE
     speedtester = speedtest.SpeedTest(
         url=SPEEDTEST_URL, download_size=download_size, upload_size=upload_size, attempts=attempts
     )
     download_result = None
     upload_result = None
     if download:
-        download_result = speedtester.download_speed(silent=json)
+        download_result = speedtester.download_speed(silent=silent)
     if upload:
-        upload_result = speedtester.upload_speed(silent=json)
+        upload_result = speedtester.upload_speed(silent=silent)
     if not download and not upload:
-        download_result = speedtester.download_speed(silent=json)
-        upload_result = speedtester.upload_speed(silent=json)
+        download_result = speedtester.download_speed(silent=silent)
+        upload_result = speedtester.upload_speed(silent=silent)
+
+    results = {
+        "download": download_result.__dict__ if download_result else None,
+        "upload": upload_result.__dict__ if upload_result else None,
+        "metadata": speedtester.metadata.__dict__,
+    }
 
     if json:
-        results = {
-            "download": download_result.__dict__ if download_result else None,
-            "upload": upload_result.__dict__ if upload_result else None,
-            "metadata": speedtester.metadata.__dict__,
-        }
-        output = rich.json.JSON.from_data(results)
-        rich.print(output)
-        return
+        rich.print(results)
     else:
         display_results(download_result=download_result, upload_result=upload_result, metadata=speedtester.metadata)
-
+    if json_output:
+        json_path = Path(json_output)
+        with json_path.open("w+") as fp:
+            _json.dump(results, fp, indent=2)
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
