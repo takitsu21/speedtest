@@ -55,10 +55,6 @@ speedtest-cli --help
 
 ## Running in a container
 
-> [!WARNING]
->
-> You may encounter permission issues when running the container due to ping command. To avoid this, you can run the container with the `-u 0:0` flag.
-
 ### Using Podman
 
 ```bash
