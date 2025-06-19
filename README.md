@@ -60,11 +60,11 @@ speedtest-cli --help
 ### Using Podman
 
 ```bash
-podman run --rm -it -u 0:0 takizz21/speedtest:latest
+podman run --rm -it takizz21/speedtest:latest
 ```
 
 ### Using Docker
 
 ```bash
-docker run --rm -it -u 0:0 takizz21/speedtest:latest
+docker run --rm -it takizz21/speedtest:latest
 ```

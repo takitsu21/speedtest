@@ -1,9 +1,9 @@
 # Install uv
-FROM python:3.13-slim
+FROM python:alpine
 
 WORKDIR /app
 
-ADD scripts/entrypoint.sh /app/entrypoint.sh
+COPY scripts/entrypoint.sh /app/entrypoint.sh
 
 RUN pip install speedtest-cloudflare-cli
 
