@@ -8,7 +8,9 @@
 [![Commit activity](https://img.shields.io/github/commit-activity/m/takitsu21/speedtest)](https://img.shields.io/github/commit-activity/m/takitsu21/speedtest)
 [![License](https://img.shields.io/github/license/takitsu21/speedtest)](https://img.shields.io/github/license/takitsu21/speedtest)
 
-Speed CLI tool to test your network connectivity
+SpeedTest CLI tool to test your network connectivity
+
+![Speedtest video demo](docs/assets/demo.gif)
 
 ## Installation
 
