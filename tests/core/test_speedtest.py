@@ -1,7 +1,6 @@
 import unittest
 import unittest.mock
 
-import ping3
 import pytest
 from pytest_mock import MockerFixture
 

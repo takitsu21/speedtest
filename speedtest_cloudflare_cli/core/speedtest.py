@@ -49,8 +49,8 @@ def track_progress(silent: bool = False) -> Generator[Progress, None, None]:
 def _fallback_ping() -> float | str:
     # Try system ping
     try:
-        out = subprocess.check_output(
-            ["ping", "-c", str(PING_COUNT), "-W", str(PING_TIMEOUT), PING_HOST],
+        out = subprocess.check_output(  # noqa: S603
+            ["ping", "-c", str(PING_COUNT), "-W", str(PING_TIMEOUT), PING_HOST],  # noqa: S607
             stderr=subprocess.DEVNULL,
             text=True,
         )
