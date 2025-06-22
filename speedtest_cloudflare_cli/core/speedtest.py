@@ -102,7 +102,7 @@ class SpeedTest:
 
     def _http_latency(self, **kwargs):
         start = time.perf_counter()
-        client().head(f"https://{PING_HOST}", **kwargs)
+        client().head(f"https://{PING_HOST}", **kwargs, headers={"Connection": "Close"})
         return (time.perf_counter() - start) * 1000
 
 
