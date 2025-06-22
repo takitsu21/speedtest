@@ -84,6 +84,10 @@ class SpeedTest:
         if self._ping_thread.is_alive():
             self._ping_thread.join()
 
+    def _init_connection(self) -> None:
+        """Opens a connection to the server and keeps it alive for subsequent requests."""
+        client().get(f"{self.url}/__down", params={"bytes": 0})
+
     def _download(self, progress: Progress | None = None, task: TaskID | None = None):
         """Download data in streaming chunks to keep the HTTP connection alive."""
         with client().stream("GET", f"{self.url}/__down", params={"bytes": self.download_size}) as response:
@@ -134,6 +138,9 @@ class SpeedTest:
         jitter = 0
         times_to_process = []
         jitters = []
+
+        self._init_connection()
+
         if progress:
             task = progress.add_task("", total=size_to_process * self.attempts)
         for _ in range(self.attempts):
