@@ -23,7 +23,7 @@ from rich.progress import (
 from speedtest_cloudflare_cli.models import metadata, result
 
 CHUNK_SIZE = 1024 * 1024
-PING_HOST = "google.com"
+PING_HOST = "1.1.1.1"
 PING_COUNT = 3
 PING_TIMEOUT = 3
 
