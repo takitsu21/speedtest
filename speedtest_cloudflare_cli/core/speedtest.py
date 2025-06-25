@@ -23,7 +23,7 @@ from rich.progress import (
 from speedtest_cloudflare_cli.models import metadata, result
 
 CHUNK_SIZE = 1024 * 1024
-PING_HOST = "google.com"
+PING_HOST = "1.1.1.1"
 PING_COUNT = 3
 PING_TIMEOUT = 3
 
@@ -49,8 +49,8 @@ def track_progress(silent: bool = False) -> Generator[Progress, None, None]:
 def _fallback_ping() -> float | str:
     # Try system ping
     try:
-        out = subprocess.check_output(
-            ["ping", "-c", str(PING_COUNT), "-W", str(PING_TIMEOUT), PING_HOST],
+        out = subprocess.check_output(  # noqa: S603
+            ["ping", "-c", str(PING_COUNT), "-W", str(PING_TIMEOUT), PING_HOST],  # noqa: S607
             stderr=subprocess.DEVNULL,
             text=True,
         )
@@ -84,6 +84,10 @@ class SpeedTest:
         if self._ping_thread.is_alive():
             self._ping_thread.join()
 
+    def _init_connection(self) -> None:
+        """Opens a connection to the server and keeps it alive for subsequent requests."""
+        client().get(f"{self.url}/__down", params={"bytes": 0})
+
     def _download(self, progress: Progress | None = None, task: TaskID | None = None):
         """Download data in streaming chunks to keep the HTTP connection alive."""
         with client().stream("GET", f"{self.url}/__down", params={"bytes": self.download_size}) as response:
@@ -98,7 +102,7 @@ class SpeedTest:
 
     def _http_latency(self, **kwargs):
         start = time.perf_counter()
-        client().head(f"https://{PING_HOST}", **kwargs)
+        client().head(f"https://{PING_HOST}", **kwargs, headers={"Connection": "Close"})
         return (time.perf_counter() - start) * 1000
 
 
@@ -134,6 +138,9 @@ class SpeedTest:
         jitter = 0
         times_to_process = []
         jitters = []
+
+        self._init_connection()
+
         if progress:
             task = progress.add_task("", total=size_to_process * self.attempts)
         for _ in range(self.attempts):
