@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speedtest Results Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #818cf8;
+      --secondary: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      color: var(--gray-900);
+      min-height: 100vh;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: var(--gray-600);
+      font-size: 1.1rem;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .card-header i {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      margin-right: 1rem;
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .download .card-header i { background: var(--primary); }
+    .upload .card-header i { background: var(--secondary); }
+    .latency .card-header i { background: var(--warning); }
+
+    .card-header h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+
+    .metric-large {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      line-height: 1.2;
+    }
+
+    .download .metric-value { color: var(--primary); }
+    .upload .metric-value { color: var(--secondary); }
+    .latency .metric-value { color: var(--warning); }
+
+    .metric-label {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    .metric-unit {
+      font-size: 1rem;
+      color: var(--gray-500);
+      margin-left: 0.25rem;
+    }
+
+    .latency-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .latency-metric {
+      background: var(--gray-100);
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .latency-metric .metric-value {
+      font-size: 1.5rem;
+      margin: 0.3rem 0;
+    }
+
+    .latency-metric .metric-label {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+    }
+
+    .network-card {
+      grid-column: span 3;
+      margin-top: 1.5rem;
+    }
+
+    .network-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .network-item {
+      background: linear-gradient(145deg, #ffffff, #f8f9ff);
+      padding: 1.25rem;
+      border-radius: 12px;
+      border: 1px solid rgba(79, 70, 229, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .network-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #4f46e5, #818cf8);
+      opacity: 0.8;
+    }
+    
+    .network-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .network-label {
+      font-size: 0.75rem;
+      color: #4f46e5;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .network-label i {
+      color: #818cf8;
+      font-size: 0.9em;
+    }
+
+    .network-value {
+      font-weight: 500;
+      color: #1e293b;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+    
+    /* Special handling for IP addresses */
+    .network-item[title^="IP Address"] .network-value {
+      font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 0.85em;
+      background: rgba(79, 70, 229, 0.05);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--gray-500);
+      font-size: 0.875rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    footer .timestamp {
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    footer .generated-by {
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    @media (max-width: 992px) {
+      .dashboard {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .network-card {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+      
+      .network-card {
+        grid-column: span 1;
+      }
+      
+      body {
+        padding: 1rem;
+      }
+      
+      .network-info {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .network-info {
+        grid-template-columns: 1fr;
+      }
+      
+      .latency-metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Speedtest Results</h1>
+      <p class="subtitle">Your connection performance metrics</p>
+    </header>
+
+    <div class="dashboard">
+      <!-- Download Speed Card -->
+      <div class="card download">
+        <div class="card-header">
+          <i class="fas fa-download"></i>
+          <h2>Download</h2>
+        </div>
+        <div class="metric-large">
+          {% if download is not none %}
+            <div class="metric-value">{{ "%0.2f"|format(download.speed) }}<span class="metric-unit">Mbps</span></div>
+            <div class="metric-label">Speed</div>
+          {% else %}
+            <div class="metric-value">N/A<span class="metric-unit">Mbps</span></div>
+            <div class="metric-label">Test not completed</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Upload Speed Card -->
+      <div class="card upload">
+        <div class="card-header">
+          <i class="fas fa-upload"></i>
+          <h2>Upload</h2>
+        </div>
+        <div class="metric-large">
+          {% if upload is not none %}
+            <div class="metric-value">{{ "%0.2f"|format(upload.speed) }}<span class="metric-unit">Mbps</span></div>
+            <div class="metric-label">Speed</div>
+          {% else %}
+            <div class="metric-value">N/A<span class="metric-unit">Mbps</span></div>
+            <div class="metric-label">Test not completed</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Latency Card -->
+      <div class="card latency">
+        <div class="card-header">
+          <i class="fas fa-signal"></i>
+          <h2>Connection</h2>
+        </div>
+        <div class="metric-large">
+          {% set test_data = download or upload %}
+          {% if test_data is not none %}
+            <div class="metric-value">{{ "%0.1f"|format(test_data.latency) }}<span class="metric-unit">ms</span></div>
+            <div class="metric-label">Ping</div>
+            
+            <div class="latency-metrics">
+              <div class="latency-metric">
+                <div class="metric-value">{{ "%0.2f"|format(test_data.jitter) }}<span class="metric-unit">ms</span></div>
+                <div class="metric-label">Jitter</div>
+              </div>
+              <div class="latency-metric">
+                <div class="metric-value">{{ "%0.2f"|format(test_data.http_latency) }}<span class="metric-unit">ms</span></div>
+                <div class="metric-label">HTTP Latency</div>
+              </div>
+            </div>
+          {% else %}
+            <div class="metric-value">N/A<span class="metric-unit">ms</span></div>
+            <div class="metric-label">Test not completed</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Network Info Card -->
+      <div class="card network-card">
+        <div class="card-header">
+          <i class="fas fa-network-wired"></i>
+          <h2>Network Information</h2>
+        </div>
+        <div class="network-info">
+          <div class="network-item">
+            <span class="network-label"><i class="fas fa-network-wired"></i> ISP</span>
+            <span class="network-value">{{ metadata.isp or 'Unknown' }}</span>
+          </div>
+          <div class="network-item">
+            <span class="network-label"><i class="fas fa-map-marker-alt"></i> Location</span>
+            <span class="network-value">
+              {% if metadata.city %}{{ metadata.city }}{% endif %}
+              {% if metadata.country %}, {{ metadata.country }}{% endif %}
+              {% if not metadata.city and not metadata.country %}Unknown{% endif %}
+            </span>
+          </div>
+          <div class="network-item">
+            <span class="network-label"><i class="fas fa-server"></i> Server</span>
+            <span class="network-value">{{ metadata.hostname or 'Unknown' }}</span>
+          </div>
+          <div class="network-item" title="IP Address">
+            <span class="network-label"><i class="fas fa-laptop"></i> IP Address</span>
+            <span class="network-value">{{ metadata.client_ip or 'Unknown' }}</span>
+          </div>
+          <div class="network-item">
+            <span class="network-label"><i class="fas fa-network-wired"></i> ASN</span>
+            <span class="network-value">{{ metadata.asn or 'Unknown' }}</span>
+          </div>
+          <div class="network-item">
+            <span class="network-label"><i class="fas fa-database"></i> Data Center</span>
+            <span class="network-value">{{ metadata.colo or 'Unknown' }}</span>
+          </div>
+          <div class="network-item">
+            <span class="network-label"><i class="fas fa-map-pin"></i> Coordinates</span>
+            <span class="network-value">
+              {% if metadata.latitude and metadata.longitude %}
+                {{ "%s, %s"|format(metadata.latitude, metadata.longitude) }}
+              {% else %}
+                Unknown
+              {% endif %}
+            </span>
+          </div>
+          <div class="network-item">
+            <span class="network-label"><i class="fas fa-globe"></i> HTTP Protocol</span>
+            <span class="network-value">{{ metadata.http_protocol or 'Unknown' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Test completed at <span class="timestamp">{{ timestamp }}</span> | <span class="generated-by">Generated by Speedtest Cloudflare CLI</span></p>
+    </footer>
+  </div>
+</body>
+</html>
