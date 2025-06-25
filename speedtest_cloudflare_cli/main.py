@@ -12,8 +12,8 @@ import rich_click as click
 from speedtest_cloudflare_cli.core import speedtest
 from speedtest_cloudflare_cli.models import metadata, result
 
-DOWNLOAD_SIZE = 50  # 50MB
-UPLOAD_SIZE = 50  # 50MB
+DOWNLOAD_SIZE = 10  # 10MB
+UPLOAD_SIZE = 10  # 10MB
 
 SPEEDTEST_URL = "https://speed.cloudflare.com/"
 
