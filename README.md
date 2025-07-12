@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/assets/icon.png" alt="Speed Test Icon" />
+</p>
+
 # speedtest-cli
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/speedtest-cloudflare-cli)
@@ -8,9 +12,9 @@
 [![Commit activity](https://img.shields.io/github/commit-activity/m/takitsu21/speedtest)](https://img.shields.io/github/commit-activity/m/takitsu21/speedtest)
 [![License](https://img.shields.io/github/license/takitsu21/speedtest)](https://img.shields.io/github/license/takitsu21/speedtest)
 
-SpeedTest CLI tool to test your network connectivity
 
 ![Speedtest video demo](docs/assets/demo.gif)
+![Speedtest dashboard](docs/assets/web_view.png)
 
 ## Installation
 
@@ -58,7 +62,7 @@ speedtest-cli --help
 ### Using Podman
 
 ```bash
-podman run --rm -it takizz21/speedtest:latest
+podman run --rm -it docker.io/takizz21/speedtest:latest
 ```
 
 ### Using Docker

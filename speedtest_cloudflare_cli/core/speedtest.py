@@ -88,7 +88,7 @@ class SpeedTest:
         """Opens a connection to the server and keeps it alive for subsequent requests."""
         client().get(f"{self.url}/__down", params={"bytes": 0})
 
-    def _download(self, progress: Progress | None = None, task: TaskID | None = None):
+    def _download(self, progress: Progress | None = None, task: TaskID | None = None) -> None:
         """Download data in streaming chunks to keep the HTTP connection alive."""
         with client().stream("GET", f"{self.url}/__down", params={"bytes": self.download_size}) as response:
             # Consume the body in chunks so the server keeps feeding data.
@@ -154,7 +154,6 @@ class SpeedTest:
                 jitters.append(jitter)
 
         jitter = sum(jitters) / len(jitters) if jitters else times_to_process[-1]
-
         http_latency = self._http_latency()
         speed = progress.tasks[task].speed * 8 / 1_000_000
 

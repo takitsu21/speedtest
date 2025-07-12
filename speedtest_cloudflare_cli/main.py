@@ -9,11 +9,11 @@ import rich.json
 import rich.table
 import rich_click as click
 
-from speedtest_cloudflare_cli.core import speedtest
+from speedtest_cloudflare_cli.core import dashboard, speedtest
 from speedtest_cloudflare_cli.models import metadata, result
 
-DOWNLOAD_SIZE = 50  # 50MB
-UPLOAD_SIZE = 50  # 50MB
+DOWNLOAD_SIZE = 30  # 30MB
+UPLOAD_SIZE = 30  # 30MB
 
 SPEEDTEST_URL = "https://speed.cloudflare.com/"
 
@@ -76,6 +76,7 @@ def display_results(
 @click.option("--json", is_flag=True, help="Output results in JSON format")
 @click.option("--silent", is_flag=True, help="Run in silent mode")
 @click.option("--json-output", type=click.Path(writable=True), default=None, help="Save JSON results to file")
+@click.option("--web_view", is_flag=True, help="Open results in web browser")
 def main(
     *,
     download: bool,
@@ -86,6 +87,7 @@ def main(
     json: bool,
     silent: bool,
     json_output: str,
+    web_view: bool,
 ) -> None:
     download_size = download_size * speedtest.CHUNK_SIZE
     upload_size = upload_size * speedtest.CHUNK_SIZE
@@ -106,6 +108,7 @@ def main(
         "download": download_result.__dict__ if download_result else None,
         "upload": upload_result.__dict__ if upload_result else None,
         "metadata": speedtester.metadata.__dict__,
+        "timestamp": speedtester.metadata.date,
     }
 
     if json:
@@ -116,6 +119,9 @@ def main(
         json_path = Path(json_output)
         with json_path.open("w+") as fp:
             _json.dump(results, fp, indent=2)
+    if web_view:
+        dashboard.webbrowser_open_dashboard(data=results)
+
 
 if __name__ == "__main__":
     sys.exit(main())
