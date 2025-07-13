@@ -8,12 +8,12 @@ import webbrowser
 from datetime import datetime, timezone
 from typing import Any
 
-from jinja2 import Environment, FileSystemLoader, select_autoescape
+import httpx
+from jinja2 import Template
 
 JsonResults = dict[str, Any]
 
-TEMPLATES_DIRECTORY = "templates"
-TEMPLATE_FILE = "dashboard.j2"
+TEMPLATE_URL = "https://raw.githubusercontent.com/takitsu21/speedtest/refs/heads/main/templates/dashboard.j2"
 
 
 def _prepare_template_data(data: JsonResults) -> JsonResults:
@@ -30,14 +30,8 @@ def _prepare_template_data(data: JsonResults) -> JsonResults:
 def _generate_dashboard(data: JsonResults) -> str:
     """Generate HTML dashboard from speedtest data using Jinja2 template."""
     # Set up Jinja2 environment
-    env = Environment(loader=FileSystemLoader(TEMPLATES_DIRECTORY), autoescape=select_autoescape(["html", "xml"]))
-
-    # Add custom filters
-    env.filters["format_speed"] = lambda x: f"{float(x or 0):.2f}"
-    env.filters["format_latency"] = lambda x: f"{float(x or 0):.1f}"
-
-    # Get template
-    template = env.get_template(TEMPLATE_FILE)
+    template_raw_github = httpx.get(TEMPLATE_URL).text
+    template = Template(template_raw_github)
 
     # Render template with data
     return template.render(**_prepare_template_data(data))
