@@ -430,17 +430,28 @@
         </div>
         <div class="metric-large">
           {% set test_data = download or upload %}
-          {% if test_data is not none %}
+          {% if test_data is not none and test_data.latency is not none %}
             <div class="metric-value">{{ "%0.1f"|format(test_data.latency) }}<span class="metric-unit">ms</span></div>
             <div class="metric-label">Ping</div>
-            
             <div class="latency-metrics">
               <div class="latency-metric">
-                <div class="metric-value">{{ "%0.2f"|format(test_data.jitter) }}<span class="metric-unit">ms</span></div>
+                <div class="metric-value">
+                  {% if test_data.jitter is not none %}
+                    {{ "%0.2f"|format(test_data.jitter) }}<span class="metric-unit">ms</span>
+                  {% else %}
+                    N/A<span class="metric-unit">ms</span>
+                  {% endif %}
+                </div>
                 <div class="metric-label">Jitter</div>
               </div>
               <div class="latency-metric">
-                <div class="metric-value">{{ "%0.2f"|format(test_data.http_latency) }}<span class="metric-unit">ms</span></div>
+                <div class="metric-value">
+                  {% if test_data.http_latency is not none %}
+                    {{ "%0.2f"|format(test_data.http_latency) }}<span class="metric-unit">ms</span>
+                  {% else %}
+                    N/A<span class="metric-unit">ms</span>
+                  {% endif %}
+                </div>
                 <div class="metric-label">HTTP Latency</div>
               </div>
             </div>
@@ -448,7 +459,6 @@
             <div class="metric-value">N/A<span class="metric-unit">ms</span></div>
             <div class="metric-label">Test not completed</div>
           {% endif %}
-        </div>
       </div>
 
       <!-- Network Info Card -->
