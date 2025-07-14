@@ -13,8 +13,9 @@
 [![License](https://img.shields.io/github/license/takitsu21/speedtest)](https://img.shields.io/github/license/takitsu21/speedtest)
 
 
-<video controls src="docs/assets/demo.mp4" title="Title"></video>
-![Speedtest dashboard](docs/assets/web_view.png)
+![SpeedTest Video demo](docs/assets/demo.gif)
+![SpeedTest dashboard](docs/assets/web_view.png)
+
 ## Installation
 
 I strongly recommend to use [pipx](https://github.com/pypa/pipx/tree/main) or [uv](https://github.com/astral-sh/uv) to install this tool.
