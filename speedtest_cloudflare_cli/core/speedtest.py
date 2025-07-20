@@ -97,14 +97,13 @@ class SpeedTest:
                     progress.update(task, description="Downloading... 🚀", advance=len(chunk))
 
     @functools.cached_property
-    def data_blocks(self):
+    def upload_data_blocks(self) -> bytes:
         return b"0" * self.upload_size
 
     def _http_latency(self, **kwargs):
         start = time.perf_counter()
         client().head(f"https://{PING_HOST}", **kwargs, headers={"Connection": "Close"})
         return (time.perf_counter() - start) * 1000
-
 
     def ping(self) -> None:
         try:
@@ -122,7 +121,7 @@ class SpeedTest:
         def data_stream():
             offset = 0
             while offset < self.upload_size:
-                chunk = self.data_blocks[offset : offset + CHUNK_SIZE]
+                chunk = self.upload_data_blocks[offset : offset + CHUNK_SIZE]
                 offset += len(chunk)
                 if progress and task is not None:
                     progress.update(task, description="Uploading... 🚀", advance=len(chunk))
@@ -173,7 +172,9 @@ class SpeedTest:
 
     def upload_speed(self, silent: bool) -> result.Result:
         with track_progress(silent=silent) as progress:
-            upload_result = self._compute_network_speed(progress, self.upload_size, self._upload)
+            upload_result = self._compute_network_speed(
+                progress=progress, size_to_process=self.upload_size, func=self._upload
+            )
 
         return upload_result
 

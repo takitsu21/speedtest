@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/assets/icon.png" alt="Speed Test Icon" />
+</p>
+
 # speedtest-cli
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/speedtest-cloudflare-cli)
@@ -8,7 +12,9 @@
 [![Commit activity](https://img.shields.io/github/commit-activity/m/takitsu21/speedtest)](https://img.shields.io/github/commit-activity/m/takitsu21/speedtest)
 [![License](https://img.shields.io/github/license/takitsu21/speedtest)](https://img.shields.io/github/license/takitsu21/speedtest)
 
-Speed CLI tool to test your network connectivity
+
+![SpeedTest Video demo](docs/assets/demo.gif)
+![SpeedTest dashboard](docs/assets/web_view.png)
 
 ## Installation
 
@@ -42,29 +48,25 @@ Run the following command to test your internet speed.
 speedtest-cli
 ```
 
-![Speedtest output](assets/speedtest_output.png)
+![Speedtest output](docs/assets/speedtest_output.png)
 
 For more information, run the --help command.
 ```bash
 speedtest-cli --help
 ```
 
-![Help output](assets/help.png)
+![Help output](docs/assets/help.png)
 
 ## Running in a container
-
-> [!WARNING]
->
-> You may encounter permission issues when running the container due to ping command. To avoid this, you can run the container with the `-u 0:0` flag.
 
 ### Using Podman
 
 ```bash
-podman run --rm -it -u 0:0 takizz21/speedtest:latest
+podman run --rm -it ghcr.io/takitsu21/speedtest:latest
 ```
 
 ### Using Docker
 
 ```bash
-docker run --rm -it -u 0:0 takizz21/speedtest:latest
+docker run --rm -it ghcr.io/takitsu21/speedtest:latest
 ```
