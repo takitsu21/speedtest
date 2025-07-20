@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/icon.png" alt="Speed Test Icon" />
+  <img src="assets/icon.png" alt="Speed Test Icon" />
 </p>
 
 # speedtest-cli
@@ -13,8 +13,8 @@
 [![License](https://img.shields.io/github/license/takitsu21/speedtest)](https://img.shields.io/github/license/takitsu21/speedtest)
 
 
-![SpeedTest Video demo](docs/assets/demo.gif)
-![SpeedTest dashboard](docs/assets/web_view.png)
+![SpeedTest Video demo](assets/demo.gif)
+![SpeedTest dashboard](assets/web_view.png)
 
 ## Installation
 
@@ -48,14 +48,14 @@ Run the following command to test your internet speed.
 speedtest-cli
 ```
 
-![Speedtest output](docs/assets/speedtest_output.png)
+![Speedtest output](assets/speedtest_output.png)
 
 For more information, run the --help command.
 ```bash
 speedtest-cli --help
 ```
 
-![Help output](docs/assets/help.png)
+![Help output](assets/help.png)
 
 ## Running in a container
 
