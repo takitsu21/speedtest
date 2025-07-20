@@ -60,7 +60,7 @@ def test_wait(my_speedtest_object, mocker: MockerFixture):
 
 
 def test_data_blocks(my_speedtest_object):
-    data_blocks = my_speedtest_object.data_blocks
+    data_blocks = my_speedtest_object.upload_data_blocks
     assert data_blocks == b"0" * my_speedtest_object.upload_size
 
 
