@@ -5,7 +5,7 @@ Generate an HTML dashboard from speedtest results using Jinja2 templates.
 
 import tempfile
 import webbrowser
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 import httpx
@@ -18,7 +18,7 @@ TEMPLATE_URL = "https://raw.githubusercontent.com/takitsu21/speedtest/refs/heads
 
 def _prepare_template_data(data: JsonResults) -> JsonResults:
     """Prepare data for the template."""
-    now_utc = data.get("timestamp", datetime.now(timezone.utc))
+    now_utc = data.get("timestamp", datetime.now(UTC))
     return {
         "download": data.get("download", {}),
         "upload": data.get("upload", {}),

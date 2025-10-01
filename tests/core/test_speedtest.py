@@ -58,7 +58,6 @@ def test_wait(my_speedtest_object, mocker: MockerFixture):
 #     )
 
 
-
 def test_data_blocks(my_speedtest_object):
     data_blocks = my_speedtest_object.upload_data_blocks
     assert data_blocks == b"0" * my_speedtest_object.upload_size
@@ -90,8 +89,6 @@ def test_data_blocks(my_speedtest_object):
 #     mock_client.return_value.head.assert_called_once()
 #     mock_client.return_value.head.assert_called_with("my_url", params={"bytes": 0})
 #     assert response == 1000
-
-
 
 
 # def test_ping(my_speedtest_object, mocker: MockerFixture):

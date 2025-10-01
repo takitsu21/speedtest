@@ -1,5 +1,4 @@
 import datetime
-from typing import Optional
 
 from pydantic import BaseModel, Field, computed_field
 
@@ -12,9 +11,9 @@ class Metadata(BaseModel):
     isp: str = Field(alias="asOrganization")
     colo: str
     country: str
-    city: Optional[str] = Field(default="N/A")
-    region: Optional[str] = Field(default="N/A")
-    postal_code: Optional[str] = Field(alias="postalCode", default="N/A")
+    city: str | None = Field(default="N/A")
+    region: str | None = Field(default="N/A")
+    postal_code: str | None = Field(alias="postalCode", default="N/A")
     latitude: str
     longitude: str
 
@@ -26,4 +25,4 @@ class Metadata(BaseModel):
     @computed_field
     @property
     def date(self) -> datetime.datetime:
-        return datetime.datetime.now(datetime.timezone.utc)
+        return datetime.datetime.now(datetime.UTC)
