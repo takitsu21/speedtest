@@ -5,8 +5,7 @@ import socket
 import subprocess
 import threading
 import time
-from collections.abc import Generator
-from typing import Callable
+from collections.abc import Callable, Generator
 
 import httpx
 import ping3
@@ -34,7 +33,7 @@ def client() -> httpx.Client:
 
 
 @contextlib.contextmanager
-def track_progress(silent: bool = False) -> Generator[Progress, None, None]:
+def track_progress(silent: bool = False) -> Generator[Progress]:
     with Progress(
         TextColumn("{task.description}"),
         BarColumn(bar_width=None),
