@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json as _json
 import sys
+from importlib import metadata as pkg_metadata
 from pathlib import Path
 
 import rich.json
@@ -68,6 +69,7 @@ def display_results(
 
 
 @click.command()
+@click.version_option(version=pkg_metadata.version("speedtest-cloudflare-cli"), prog_name="speedtest-cli")
 @click.option("--upload", "-u", is_flag=True, help="Run upload test")
 @click.option("--download", "-d", is_flag=True, help="Run download test")
 @click.option("--download_size", "-ds", type=int, default=DOWNLOAD_SIZE, help="Download size in MB")
