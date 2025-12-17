@@ -31,8 +31,8 @@ Homepage = "https://takitsu21.github.io/speedtest/"
 Repository = "https://github.com/takitsu21/speedtest"
 Documentation = "https://takitsu21.github.io/speedtest/"
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pytest>=7.2.0",
     "pre-commit>=2.20.0",
     "tox-uv>=1.11.3",
