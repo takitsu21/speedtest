@@ -29,7 +29,11 @@ PING_TIMEOUT = 3
 
 @functools.cache
 def client() -> httpx.Client:
-    return httpx.Client(headers={"Connection": "Keep-Alive"}, timeout=None)  # noqa: S113
+    headers = {
+        "Connection": "Keep-Alive",
+        "Referer": "https://speed.cloudflare.com/"
+    }
+    return httpx.Client(headers=headers, timeout=None)  # noqa: S113
 
 
 @contextlib.contextmanager
