@@ -23,6 +23,7 @@ from speedtest_cloudflare_cli.models import metadata, result
 
 CHUNK_SIZE = 1024 * 1024
 PING_HOST = "1.1.1.1"
+CLOUDFLARE_HOST = "speed.cloudflare.com"
 PING_COUNT = 3
 PING_TIMEOUT = 3
 
@@ -31,7 +32,7 @@ PING_TIMEOUT = 3
 def client() -> httpx.Client:
     headers = {
         "Connection": "Keep-Alive",
-        "Referer": "https://speed.cloudflare.com/"
+        "Referer": CLOUDFLARE_HOST
     }
     return httpx.Client(headers=headers, timeout=None)  # noqa: S113
 
@@ -105,7 +106,7 @@ class SpeedTest:
 
     def _http_latency(self, **kwargs):
         start = time.perf_counter()
-        client().head(f"https://{PING_HOST}", **kwargs, headers={"Connection": "Close"})
+        client().head(f"https://{CLOUDFLARE_HOST}", **kwargs, headers={"Connection": "Close"})
         return (time.perf_counter() - start) * 1000
 
     def ping(self) -> None:
