@@ -5,7 +5,7 @@ description = "Speed CLI tool to test your network connectivity"
 authors = [{ name = "Dylann Batisse", email = "dylann.batisse@protonmail.com" }]
 readme = "README.md"
 keywords = ['python']
-requires-python = ">=3.9,<3.14"
+requires-python = ">=3.14,<3.15"
 classifiers = [
     "Intended Audience :: Developers",
     "Programming Language :: Python",
