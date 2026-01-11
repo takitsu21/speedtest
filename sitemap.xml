@@ -2,6 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://takitsu21.github.io/speedtest/</loc>
-         <lastmod>2025-07-20</lastmod>
+         <lastmod>2026-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://takitsu21.github.io/speedtest/api-reference/</loc>
+         <lastmod>2026-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://takitsu21.github.io/speedtest/contributing/</loc>
+         <lastmod>2026-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://takitsu21.github.io/speedtest/docker/</loc>
+         <lastmod>2026-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://takitsu21.github.io/speedtest/faq/</loc>
+         <lastmod>2026-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://takitsu21.github.io/speedtest/features/</loc>
+         <lastmod>2026-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://takitsu21.github.io/speedtest/installation/</loc>
+         <lastmod>2026-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://takitsu21.github.io/speedtest/usage/</loc>
+         <lastmod>2026-01-11</lastmod>
+    </url>
+    <url>
+         <loc>https://takitsu21.github.io/speedtest/web-dashboard/</loc>
+         <lastmod>2026-01-11</lastmod>
     </url>
 </urlset>

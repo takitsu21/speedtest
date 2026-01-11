@@ -1,0 +1,2757 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Speed CLI tool to test your network connectivity">
+      
+      
+        <meta name="author" content="Dylann Batisse">
+      
+      
+        <link rel="canonical" href="https://takitsu21.github.io/speedtest/faq/">
+      
+      
+        <link rel="prev" href="../contributing/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>FAQ - speedtest</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#faq-troubleshooting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="speedtest" class="md-header__button md-logo" aria-label="speedtest" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            speedtest
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAQ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/takitsu21/speedtest" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    takitsu21/speedtest
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="speedtest" class="md-nav__button md-logo" aria-label="speedtest" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    speedtest
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/takitsu21/speedtest" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    takitsu21/speedtest
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Developers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    For Developers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-speedtest-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is speedtest-cli?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-accurate-is-speedtest-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How accurate is speedtest-cli?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-servers-does-speedtest-cli-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which servers does speedtest-cli use?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-choose-a-specific-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I choose a specific server?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-my-data-private" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is my data private?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-speedtest-cli-free" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is speedtest-cli free?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#does-it-work-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does it work offline?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-not-found-after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Not Found After Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-denied-during-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permission Denied During Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-version-incompatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Version Incompatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-not-found-on-pypi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Not Found on PyPI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tests-are-very-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests Are Very Slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pinglatency-test-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ping/Latency Test Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-timeout-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Timeout Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-differ-from-other-speed-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results Differ from Other Speed Tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-dashboard-wont-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web Dashboard Won't Open
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-output-not-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON Output Not Working
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slower-speeds-than-expected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slower Speeds Than Expected
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-jitter-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High Jitter Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-ping-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High Ping Latency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockercontainer-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker/Container Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker/Container Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cannot-pull-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cannot Pull Docker Image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-doesnt-show-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container Doesn't Show Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-permission-denied-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker Permission Denied (Linux)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apilibrary-usage-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API/Library Usage Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API/Library Usage Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-checking-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type Checking Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-specific-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform-Specific Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform-Specific Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-with-other-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparing with Other Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparing with Other Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-ookla-speedtest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vs. Ookla Speedtest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-fastcom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vs. Fast.com
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-more-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting More Help
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting More Help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ask-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-debug-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable Debug Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Error Messages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Error Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-error-could-not-connect-to-speedcloudflarecom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Network error: Could not connect to speed.cloudflare.com"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-denied-cannot-create-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Permission denied: Cannot create file"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modulenotfounderror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "ModuleNotFoundError"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-speedtest-cli-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Command 'speedtest-cli' not found"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-best-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Best Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips for Best Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimize-test-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimize Test Accuracy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automation-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automation Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-speedtest-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is speedtest-cli?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-accurate-is-speedtest-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How accurate is speedtest-cli?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-servers-does-speedtest-cli-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which servers does speedtest-cli use?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-choose-a-specific-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I choose a specific server?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-my-data-private" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is my data private?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-speedtest-cli-free" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is speedtest-cli free?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#does-it-work-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does it work offline?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-not-found-after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Not Found After Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-denied-during-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permission Denied During Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-version-incompatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Version Incompatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-not-found-on-pypi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Not Found on PyPI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tests-are-very-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests Are Very Slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pinglatency-test-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ping/Latency Test Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-timeout-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Timeout Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-differ-from-other-speed-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results Differ from Other Speed Tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-dashboard-wont-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web Dashboard Won't Open
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-output-not-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON Output Not Working
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slower-speeds-than-expected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slower Speeds Than Expected
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-jitter-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High Jitter Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-ping-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High Ping Latency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockercontainer-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker/Container Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker/Container Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cannot-pull-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cannot Pull Docker Image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-doesnt-show-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container Doesn't Show Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-permission-denied-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker Permission Denied (Linux)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apilibrary-usage-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API/Library Usage Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API/Library Usage Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-checking-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type Checking Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-specific-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform-Specific Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform-Specific Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-with-other-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparing with Other Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparing with Other Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-ookla-speedtest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vs. Ookla Speedtest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-fastcom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vs. Fast.com
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-more-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting More Help
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting More Help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ask-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-debug-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable Debug Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Error Messages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Error Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-error-could-not-connect-to-speedcloudflarecom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Network error: Could not connect to speed.cloudflare.com"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-denied-cannot-create-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Permission denied: Cannot create file"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modulenotfounderror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "ModuleNotFoundError"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-speedtest-cli-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Command 'speedtest-cli' not found"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-best-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Best Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips for Best Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimize-test-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimize Test Accuracy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automation-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automation Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="faq-troubleshooting">FAQ &amp; Troubleshooting<a class="headerlink" href="#faq-troubleshooting" title="Permanent link">&para;</a></h1>
+<p>Common questions and solutions for <strong>speedtest-cli</strong>.</p>
+<h2 id="general-questions">General Questions<a class="headerlink" href="#general-questions" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-speedtest-cli">What is speedtest-cli?<a class="headerlink" href="#what-is-speedtest-cli" title="Permanent link">&para;</a></h3>
+<p>speedtest-cli is a command-line tool for testing your internet connection speed. It uses Cloudflare's global network infrastructure to measure download/upload speeds, latency, jitter, and other network metrics.</p>
+<h3 id="how-accurate-is-speedtest-cli">How accurate is speedtest-cli?<a class="headerlink" href="#how-accurate-is-speedtest-cli" title="Permanent link">&para;</a></h3>
+<p>speedtest-cli provides accurate measurements when:</p>
+<ul>
+<li>You're connected via Ethernet (Wi-Fi adds variability)</li>
+<li>No other applications are using bandwidth</li>
+<li>Tests are run to nearby Cloudflare servers</li>
+<li>Adequate test file sizes are used</li>
+</ul>
+<p>Results may vary slightly from other speed test tools due to different testing methodologies and server locations.</p>
+<h3 id="which-servers-does-speedtest-cli-use">Which servers does speedtest-cli use?<a class="headerlink" href="#which-servers-does-speedtest-cli-use" title="Permanent link">&para;</a></h3>
+<p>speedtest-cli uses Cloudflare's global network (speed.cloudflare.com). It automatically connects to the nearest Cloudflare edge server for optimal performance.</p>
+<h3 id="can-i-choose-a-specific-server">Can I choose a specific server?<a class="headerlink" href="#can-i-choose-a-specific-server" title="Permanent link">&para;</a></h3>
+<p>Currently, speedtest-cli automatically selects the nearest Cloudflare server. Manual server selection is not supported, but it's on the roadmap for future releases.</p>
+<h3 id="is-my-data-private">Is my data private?<a class="headerlink" href="#is-my-data-private" title="Permanent link">&para;</a></h3>
+<p>Yes. speedtest-cli:</p>
+<ul>
+<li>✅ Uses HTTPS for all connections</li>
+<li>✅ Doesn't collect personal information</li>
+<li>✅ Doesn't store browsing history</li>
+<li>✅ Is open source (auditable)</li>
+<li>✅ Doesn't send telemetry to developers</li>
+</ul>
+<p>The only data transmitted is:
+- Test data to/from Cloudflare
+- Your IP address (necessary for routing)</p>
+<h3 id="is-speedtest-cli-free">Is speedtest-cli free?<a class="headerlink" href="#is-speedtest-cli-free" title="Permanent link">&para;</a></h3>
+<p>Yes, speedtest-cli is completely free and open source under the MIT License.</p>
+<h3 id="does-it-work-offline">Does it work offline?<a class="headerlink" href="#does-it-work-offline" title="Permanent link">&para;</a></h3>
+<p>No, speedtest-cli requires an active internet connection to test your speed.</p>
+<hr />
+<h2 id="installation-issues">Installation Issues<a class="headerlink" href="#installation-issues" title="Permanent link">&para;</a></h2>
+<h3 id="command-not-found-after-installation">Command Not Found After Installation<a class="headerlink" href="#command-not-found-after-installation" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>speedtest-cli: command not found</code></p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Ensure installation path is in PATH:</strong></li>
+</ol>
+<p>```bash
+   # For pipx
+   pipx ensurepath</p>
+<p># Restart terminal or reload shell
+   source ~/.bashrc  # or ~/.zshrc
+   ```</p>
+<ol>
+<li><strong>Verify installation:</strong></li>
+</ol>
+<p><code>bash
+   pipx list  # or uv tool list</code></p>
+<ol>
+<li><strong>Reinstall:</strong></li>
+</ol>
+<p><code>bash
+   pipx uninstall speedtest-cloudflare-cli
+   pipx install speedtest-cloudflare-cli</code></p>
+<ol>
+<li><strong>Use full path:</strong></li>
+</ol>
+<p><code>bash
+   ~/.local/bin/speedtest-cli</code></p>
+<h3 id="permission-denied-during-installation">Permission Denied During Installation<a class="headerlink" href="#permission-denied-during-installation" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Permission errors with pip</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Use pipx or uv instead (recommended):</strong></li>
+</ol>
+<p><code>bash
+   pipx install speedtest-cloudflare-cli</code></p>
+<ol>
+<li><strong>Install for current user only:</strong></li>
+</ol>
+<p><code>bash
+   pip install --user speedtest-cloudflare-cli</code></p>
+<ol>
+<li><strong>Don't use sudo with pip</strong> (can break system packages)</li>
+</ol>
+<h3 id="python-version-incompatibility">Python Version Incompatibility<a class="headerlink" href="#python-version-incompatibility" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>Requires Python 3.9+</code></p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Check Python version:</strong></li>
+</ol>
+<p><code>bash
+   python --version</code></p>
+<ol>
+<li><strong>Install compatible Python:</strong></li>
+</ol>
+<p>```bash
+   # Ubuntu/Debian
+   sudo apt install python3.12</p>
+<p># macOS
+   brew install python@3.12
+   ```</p>
+<ol>
+<li><strong>Use pyenv for multiple Python versions:</strong></li>
+</ol>
+<p><code>bash
+   pyenv install 3.12
+   pyenv global 3.12</code></p>
+<h3 id="package-not-found-on-pypi">Package Not Found on PyPI<a class="headerlink" href="#package-not-found-on-pypi" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>Could not find a version that satisfies the requirement</code></p>
+<p><strong>Solution:</strong></p>
+<p>Ensure correct package name:</p>
+<pre><code class="language-bash"># ✅ Correct
+pip install speedtest-cloudflare-cli
+
+# ❌ Wrong
+pip install speedtest-cli  # Different package!
+</code></pre>
+<hr />
+<h2 id="usage-issues">Usage Issues<a class="headerlink" href="#usage-issues" title="Permanent link">&para;</a></h2>
+<h3 id="tests-are-very-slow">Tests Are Very Slow<a class="headerlink" href="#tests-are-very-slow" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Speed tests take too long to complete</p>
+<p><strong>Possible Causes &amp; Solutions:</strong></p>
+<ol>
+<li><strong>Large test files on slow connection:</strong></li>
+</ol>
+<p><code>bash
+   # Use smaller file sizes
+   speedtest-cli -ds 10 -us 5</code></p>
+<ol>
+<li><strong>Network congestion:</strong></li>
+<li>Test during off-peak hours</li>
+<li>
+<p>Close bandwidth-heavy applications</p>
+</li>
+<li>
+<p><strong>Wi-Fi interference:</strong></p>
+</li>
+<li>Switch to Ethernet</li>
+<li>Move closer to router</li>
+<li>
+<p>Test on 5GHz band if available</p>
+</li>
+<li>
+<p><strong>System resources:</strong></p>
+</li>
+<li>Close unnecessary applications</li>
+<li>Check CPU/memory usage</li>
+</ol>
+<h3 id="pinglatency-test-fails">Ping/Latency Test Fails<a class="headerlink" href="#pinglatency-test-fails" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>Ping test failed</code> or very high latency</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>ICMP may be blocked:</strong></li>
+</ol>
+<p>speedtest-cli automatically falls back to HTTP latency measurement. This is normal and expected in many environments.</p>
+<ol>
+<li><strong>Grant ICMP permissions (Linux):</strong></li>
+</ol>
+<p><code>bash
+   # Not recommended for security reasons
+   sudo setcap cap_net_raw+ep $(which python3)</code></p>
+<ol>
+<li><strong>Use HTTP latency instead:</strong></li>
+</ol>
+<p>HTTP latency is displayed automatically and is sufficient for most use cases.</p>
+<ol>
+<li><strong>Check firewall:</strong></li>
+<li>Ensure outbound HTTPS is allowed</li>
+<li>Check for corporate firewall rules</li>
+</ol>
+<h3 id="connection-timeout-errors">Connection Timeout Errors<a class="headerlink" href="#connection-timeout-errors" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>Connection timeout</code> or <code>Network unreachable</code></p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Check internet connection:</strong></li>
+</ol>
+<p><code>bash
+   ping 1.1.1.1
+   curl https://speed.cloudflare.com</code></p>
+<ol>
+<li><strong>Check proxy settings:</strong></li>
+</ol>
+<p>speedtest-cli respects system proxy settings. Ensure they're correct.</p>
+<ol>
+<li><strong>Disable VPN temporarily:</strong></li>
+</ol>
+<p>Some VPNs may interfere with speed tests.</p>
+<ol>
+<li><strong>Check firewall:</strong></li>
+</ol>
+<p>Allow outbound HTTPS connections to *.cloudflare.com</p>
+<ol>
+<li><strong>Try different network:</strong></li>
+</ol>
+<p>Test on different Wi-Fi or Ethernet connection.</p>
+<h3 id="results-differ-from-other-speed-tests">Results Differ from Other Speed Tests<a class="headerlink" href="#results-differ-from-other-speed-tests" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Different results compared to Ookla, Fast.com, etc.</p>
+<p><strong>Explanation:</strong></p>
+<p>This is <strong>normal</strong> and expected because:</p>
+<ul>
+<li><strong>Different servers</strong>: speedtest-cli uses Cloudflare, others use different networks</li>
+<li><strong>Different methodologies</strong>: Varying test algorithms</li>
+<li><strong>Different times</strong>: Network conditions change</li>
+<li><strong>Different locations</strong>: Server distances vary</li>
+</ul>
+<p><strong>Tips for Consistency:</strong></p>
+<ol>
+<li>Run multiple tests:</li>
+</ol>
+<p><code>bash
+   speedtest-cli --attempts 5</code></p>
+<ol>
+<li>Test at same time of day</li>
+<li>Use same connection type (Wi-Fi vs Ethernet)</li>
+<li>Close background applications</li>
+</ol>
+<h3 id="web-dashboard-wont-open">Web Dashboard Won't Open<a class="headerlink" href="#web-dashboard-wont-open" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>--web_view</code> doesn't open browser</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Manually open HTML file:</strong></li>
+</ol>
+<p>```bash
+   # Linux/macOS
+   find /tmp -name "speedtest_dashboard*.html" -exec firefox {} \;</p>
+<p># macOS
+   open "$(find /tmp -name 'speedtest_dashboard*.html' | head -1)"
+   ```</p>
+<ol>
+<li><strong>Check default browser:</strong></li>
+</ol>
+<p>Ensure you have a default browser configured.</p>
+<ol>
+<li><strong>Permissions:</strong></li>
+</ol>
+<p>Check that /tmp is writable:</p>
+<p><code>bash
+   ls -ld /tmp</code></p>
+<ol>
+<li><strong>Try different browser:</strong></li>
+</ol>
+<p><code>bash
+   # Specify browser
+   BROWSER=chromium speedtest-cli --web_view</code></p>
+<h3 id="json-output-not-working">JSON Output Not Working<a class="headerlink" href="#json-output-not-working" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>--json</code> produces no output or errors</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Check for syntax errors:</strong></li>
+</ol>
+<p><code>bash
+   speedtest-cli --json | jq .</code></p>
+<ol>
+<li><strong>Redirect errors:</strong></li>
+</ol>
+<p><code>bash
+   speedtest-cli --json 2&gt;&amp;1 | tee output.log</code></p>
+<ol>
+<li><strong>Check file permissions:</strong></li>
+</ol>
+<p><code>bash
+   speedtest-cli --json-output results.json
+   ls -l results.json</code></p>
+<hr />
+<h2 id="performance-issues">Performance Issues<a class="headerlink" href="#performance-issues" title="Permanent link">&para;</a></h2>
+<h3 id="slower-speeds-than-expected">Slower Speeds Than Expected<a class="headerlink" href="#slower-speeds-than-expected" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Test results slower than ISP advertised speeds</p>
+<p><strong>Troubleshooting Steps:</strong></p>
+<ol>
+<li><strong>Use Ethernet connection:</strong></li>
+</ol>
+<p>Wi-Fi typically slower than wired.</p>
+<ol>
+<li><strong>Test at different times:</strong></li>
+</ol>
+<p>Network congestion varies throughout day.</p>
+<ol>
+<li><strong>Close bandwidth-heavy apps:</strong></li>
+<li>Stop downloads/uploads</li>
+<li>Pause cloud sync (Dropbox, Google Drive)</li>
+<li>Close streaming services</li>
+<li>
+<p>Disable auto-updates</p>
+</li>
+<li>
+<p><strong>Restart router/modem:</strong></p>
+</li>
+</ol>
+<p>Power cycle your network equipment.</p>
+<ol>
+<li><strong>Check for ISP issues:</strong></li>
+</ol>
+<p>Contact ISP if consistently slow.</p>
+<ol>
+<li><strong>Test on different devices:</strong></li>
+</ol>
+<p>Isolate whether issue is device-specific.</p>
+<ol>
+<li><strong>Check system resources:</strong></li>
+</ol>
+<p><code>bash
+   top  # or htop</code></p>
+<ol>
+<li><strong>Disable QoS:</strong></li>
+</ol>
+<p>Quality of Service settings may limit speed.</p>
+<h3 id="high-jitter-values">High Jitter Values<a class="headerlink" href="#high-jitter-values" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Jitter is high (&gt; 30ms)</p>
+<p><strong>Causes &amp; Solutions:</strong></p>
+<ol>
+<li><strong>Wi-Fi interference:</strong></li>
+<li>Switch to Ethernet</li>
+<li>Change Wi-Fi channel</li>
+<li>
+<p>Move closer to router</p>
+</li>
+<li>
+<p><strong>Network congestion:</strong></p>
+</li>
+<li>Test during off-peak hours</li>
+<li>
+<p>Close bandwidth-heavy applications</p>
+</li>
+<li>
+<p><strong>ISP issues:</strong></p>
+</li>
+<li>Contact ISP if persistent</li>
+<li>
+<p>Check for service outages</p>
+</li>
+<li>
+<p><strong>Router issues:</strong></p>
+</li>
+<li>Restart router</li>
+<li>Update router firmware</li>
+<li>Replace old router</li>
+</ol>
+<h3 id="high-ping-latency">High Ping Latency<a class="headerlink" href="#high-ping-latency" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Ping is high (&gt; 100ms)</p>
+<p><strong>Possible Causes:</strong></p>
+<ol>
+<li><strong>Geographic distance to server:</strong></li>
+<li>Normal if far from Cloudflare edge</li>
+<li>
+<p>Check with <code>metadata.colo</code></p>
+</li>
+<li>
+<p><strong>Network routing:</strong></p>
+</li>
+<li>ISP routing inefficiency</li>
+<li>
+<p>Use traceroute to diagnose</p>
+</li>
+<li>
+<p><strong>VPN/Proxy:</strong></p>
+</li>
+<li>Adds latency</li>
+<li>
+<p>Test without VPN</p>
+</li>
+<li>
+<p><strong>Wi-Fi:</strong></p>
+</li>
+<li>Switch to Ethernet</li>
+<li>Reduce interference</li>
+</ol>
+<hr />
+<h2 id="dockercontainer-issues">Docker/Container Issues<a class="headerlink" href="#dockercontainer-issues" title="Permanent link">&para;</a></h2>
+<h3 id="cannot-pull-docker-image">Cannot Pull Docker Image<a class="headerlink" href="#cannot-pull-docker-image" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>Error response from daemon: pull access denied</code></p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Use correct image name:</strong></li>
+</ol>
+<p><code>bash
+   docker pull ghcr.io/takitsu21/speedtest:latest</code></p>
+<ol>
+<li><strong>Check network connectivity:</strong></li>
+</ol>
+<p><code>bash
+   ping ghcr.io</code></p>
+<ol>
+<li><strong>Retry pull:</strong></li>
+</ol>
+<p><code>bash
+   docker pull --quiet ghcr.io/takitsu21/speedtest:latest</code></p>
+<h3 id="container-doesnt-show-output">Container Doesn't Show Output<a class="headerlink" href="#container-doesnt-show-output" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Docker container runs but no output</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Use -it flags:</strong></li>
+</ol>
+<p><code>bash
+   docker run --rm -it ghcr.io/takitsu21/speedtest:latest</code></p>
+<ol>
+<li><strong>Check logs:</strong></li>
+</ol>
+<p><code>bash
+   docker logs &lt;container-id&gt;</code></p>
+<ol>
+<li><strong>Run with shell:</strong></li>
+</ol>
+<p><code>bash
+   docker run --rm -it ghcr.io/takitsu21/speedtest:latest sh
+   speedtest-cli</code></p>
+<h3 id="docker-permission-denied-linux">Docker Permission Denied (Linux)<a class="headerlink" href="#docker-permission-denied-linux" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>permission denied while trying to connect to Docker daemon</code></p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Add user to docker group:</strong></li>
+</ol>
+<p><code>bash
+   sudo usermod -aG docker $USER
+   newgrp docker</code></p>
+<ol>
+<li><strong>Use Podman (rootless):</strong></li>
+</ol>
+<p><code>bash
+   podman run --rm -it ghcr.io/takitsu21/speedtest:latest</code></p>
+<ol>
+<li><strong>Use sudo (not recommended):</strong></li>
+</ol>
+<p><code>bash
+   sudo docker run --rm -it ghcr.io/takitsu21/speedtest:latest</code></p>
+<hr />
+<h2 id="apilibrary-usage-issues">API/Library Usage Issues<a class="headerlink" href="#apilibrary-usage-issues" title="Permanent link">&para;</a></h2>
+<h3 id="import-errors">Import Errors<a class="headerlink" href="#import-errors" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>ModuleNotFoundError: No module named 'speedtest_cloudflare_cli'</code></p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Verify installation:</strong></li>
+</ol>
+<p><code>bash
+   pip list | grep speedtest</code></p>
+<ol>
+<li><strong>Install package:</strong></li>
+</ol>
+<p><code>bash
+   pip install speedtest-cloudflare-cli</code></p>
+<ol>
+<li><strong>Check Python path:</strong></li>
+</ol>
+<p><code>python
+   import sys
+   print(sys.path)</code></p>
+<ol>
+<li><strong>Use virtual environment:</strong></li>
+</ol>
+<p><code>bash
+   python -m venv venv
+   source venv/bin/activate
+   pip install speedtest-cloudflare-cli</code></p>
+<h3 id="type-checking-errors">Type Checking Errors<a class="headerlink" href="#type-checking-errors" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> mypy shows type errors</p>
+<p><strong>Solution:</strong></p>
+<p>Install type stubs if needed:</p>
+<pre><code class="language-bash">pip install types-httpx
+</code></pre>
+<p>The library includes type hints, so most IDEs will have proper autocomplete.</p>
+<hr />
+<h2 id="platform-specific-issues">Platform-Specific Issues<a class="headerlink" href="#platform-specific-issues" title="Permanent link">&para;</a></h2>
+<h3 id="windows-issues">Windows Issues<a class="headerlink" href="#windows-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Various Windows-specific issues</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Use Windows Terminal:</strong></li>
+</ol>
+<p>Download from Microsoft Store for best experience.</p>
+<ol>
+<li><strong>PowerShell encoding:</strong></li>
+</ol>
+<p><code>powershell
+   [Console]::OutputEncoding = [System.Text.Encoding]::UTF8</code></p>
+<ol>
+<li><strong>Path issues:</strong></li>
+</ol>
+<p>Add Python Scripts directory to PATH:
+   <code>C:\Users\YourName\AppData\Local\Programs\Python\Python312\Scripts</code></p>
+<ol>
+<li><strong>ICMP permissions:</strong></li>
+</ol>
+<p>Usually available by default on Windows.</p>
+<h3 id="macos-issues">macOS Issues<a class="headerlink" href="#macos-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> macOS-specific issues</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>System Integrity Protection:</strong></li>
+</ol>
+<p>No special configuration needed.</p>
+<ol>
+<li><strong>Homebrew Python:</strong></li>
+</ol>
+<p>Use pipx or uv to avoid conflicts.</p>
+<ol>
+<li><strong>Terminal permissions:</strong></li>
+</ol>
+<p>Grant Terminal full disk access in System Preferences if needed.</p>
+<h3 id="linux-issues">Linux Issues<a class="headerlink" href="#linux-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Linux-specific issues</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>ICMP permissions:</strong></li>
+</ol>
+<p><code>bash
+   # Grant capabilities (optional)
+   sudo setcap cap_net_raw+ep $(which python3)</code></p>
+<ol>
+<li><strong>Snap/Flatpak isolation:</strong></li>
+</ol>
+<p>Use native installation instead.</p>
+<ol>
+<li><strong>SELinux:</strong></li>
+</ol>
+<p>May need to adjust policies in rare cases.</p>
+<hr />
+<h2 id="comparing-with-other-tools">Comparing with Other Tools<a class="headerlink" href="#comparing-with-other-tools" title="Permanent link">&para;</a></h2>
+<h3 id="vs-ookla-speedtest">vs. Ookla Speedtest<a class="headerlink" href="#vs-ookla-speedtest" title="Permanent link">&para;</a></h3>
+<p><strong>Differences:</strong></p>
+<ul>
+<li><strong>Backend</strong>: Cloudflare vs Ookla servers</li>
+<li><strong>Open Source</strong>: Yes vs No</li>
+<li><strong>CLI-first</strong>: Yes vs GUI-first</li>
+<li><strong>Privacy</strong>: High vs Medium</li>
+</ul>
+<p><strong>When to use speedtest-cli:</strong>
+- Command-line workflows
+- Automation/scripting
+- Privacy concerns
+- Cloudflare infrastructure testing</p>
+<p><strong>When to use Ookla:</strong>
+- Need server selection
+- Prefer GUI
+- ISP uses Ookla for official tests</p>
+<h3 id="vs-fastcom">vs. Fast.com<a class="headerlink" href="#vs-fastcom" title="Permanent link">&para;</a></h3>
+<p><strong>Differences:</strong></p>
+<ul>
+<li><strong>Backend</strong>: Cloudflare vs Netflix CDN</li>
+<li><strong>CLI</strong>: Native vs Web-only</li>
+<li><strong>Metrics</strong>: Comprehensive vs Basic</li>
+<li><strong>Automation</strong>: Easy vs Difficult</li>
+</ul>
+<p><strong>When to use speedtest-cli:</strong>
+- More detailed metrics needed
+- CLI automation required
+- JSON output needed</p>
+<p><strong>When to use Fast.com:</strong>
+- Quick browser test
+- Netflix streaming quality</p>
+<hr />
+<h2 id="getting-more-help">Getting More Help<a class="headerlink" href="#getting-more-help" title="Permanent link">&para;</a></h2>
+<h3 id="check-documentation">Check Documentation<a class="headerlink" href="#check-documentation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><a href="../installation/">Installation Guide</a></strong> - Setup help</li>
+<li><strong><a href="../usage/">Usage Guide</a></strong> - CLI options</li>
+<li><strong><a href="../features/">Features</a></strong> - Capabilities</li>
+<li><strong><a href="../api-reference/">API Reference</a></strong> - Library usage</li>
+</ul>
+<h3 id="report-issues">Report Issues<a class="headerlink" href="#report-issues" title="Permanent link">&para;</a></h3>
+<p>If you've found a bug:</p>
+<ol>
+<li>Check <a href="https://github.com/takitsu21/speedtest/issues">existing issues</a></li>
+<li>Create a new issue with:</li>
+<li>OS and Python version</li>
+<li>speedtest-cli version</li>
+<li>Steps to reproduce</li>
+<li>Error messages</li>
+<li>Expected vs actual behavior</li>
+</ol>
+<h3 id="ask-questions">Ask Questions<a class="headerlink" href="#ask-questions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><a href="https://github.com/takitsu21/speedtest/discussions">GitHub Discussions</a></strong> - Ask questions</li>
+<li><strong><a href="https://github.com/takitsu21/speedtest/issues">GitHub Issues</a></strong> - Report bugs</li>
+</ul>
+<h3 id="enable-debug-output">Enable Debug Output<a class="headerlink" href="#enable-debug-output" title="Permanent link">&para;</a></h3>
+<p>For troubleshooting, run with verbose Python logging:</p>
+<pre><code class="language-bash">python -m speedtest_cloudflare_cli.main --help
+</code></pre>
+<hr />
+<h2 id="common-error-messages">Common Error Messages<a class="headerlink" href="#common-error-messages" title="Permanent link">&para;</a></h2>
+<h3 id="network-error-could-not-connect-to-speedcloudflarecom">"Network error: Could not connect to speed.cloudflare.com"<a class="headerlink" href="#network-error-could-not-connect-to-speedcloudflarecom" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Cannot reach Cloudflare servers</p>
+<p><strong>Solution:</strong>
+1. Check internet connection
+2. Check firewall settings
+3. Try with VPN disabled
+4. Verify DNS resolution: <code>nslookup speed.cloudflare.com</code></p>
+<h3 id="permission-denied-cannot-create-file">"Permission denied: Cannot create file"<a class="headerlink" href="#permission-denied-cannot-create-file" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> No write permissions for output file</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-bash"># Check permissions
+ls -la /path/to/output/
+
+# Use writable location
+speedtest-cli --json-output ~/results.json
+</code></pre>
+<h3 id="modulenotfounderror">"ModuleNotFoundError"<a class="headerlink" href="#modulenotfounderror" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Package not installed or wrong environment</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-bash"># Verify installation
+pip show speedtest-cloudflare-cli
+
+# Reinstall
+pip install --force-reinstall speedtest-cloudflare-cli
+</code></pre>
+<h3 id="command-speedtest-cli-not-found">"Command 'speedtest-cli' not found"<a class="headerlink" href="#command-speedtest-cli-not-found" title="Permanent link">&para;</a></h3>
+<p><strong>Cause:</strong> Installation path not in PATH</p>
+<p><strong>Solution:</strong>
+See <a href="#command-not-found-after-installation">Command Not Found</a> above.</p>
+<hr />
+<h2 id="tips-for-best-results">Tips for Best Results<a class="headerlink" href="#tips-for-best-results" title="Permanent link">&para;</a></h2>
+<h3 id="optimize-test-accuracy">Optimize Test Accuracy<a class="headerlink" href="#optimize-test-accuracy" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Use Ethernet</strong> instead of Wi-Fi</li>
+<li><strong>Close all applications</strong> using bandwidth</li>
+<li><strong>Run multiple tests</strong> with <code>--attempts 3</code></li>
+<li><strong>Test at different times</strong> to see variance</li>
+<li><strong>Restart router</strong> before important tests</li>
+</ol>
+<h3 id="automation-best-practices">Automation Best Practices<a class="headerlink" href="#automation-best-practices" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Use silent mode</strong> in scripts</li>
+<li><strong>Export to JSON</strong> for parsing</li>
+<li><strong>Don't test too frequently</strong> (respect bandwidth)</li>
+<li><strong>Handle errors gracefully</strong> in scripts</li>
+<li><strong>Log results</strong> for historical tracking</li>
+</ol>
+<h3 id="performance-tuning">Performance Tuning<a class="headerlink" href="#performance-tuning" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Adjust test sizes</strong> based on connection speed</li>
+<li><strong>Use download-only</strong> for quick tests</li>
+<li><strong>Enable silent mode</strong> to reduce overhead</li>
+<li><strong>Run from containers</strong> for isolation</li>
+</ol>
+<hr />
+<p>Still have questions? <a href="https://github.com/takitsu21/speedtest/discussions">Open a discussion</a> on GitHub!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://takitsu21.com">takitsu21</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/takitsu21/speedtest" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/speedtest" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2226 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Speed CLI tool to test your network connectivity">
+      
+      
+        <meta name="author" content="Dylann Batisse">
+      
+      
+        <link rel="canonical" href="https://takitsu21.github.io/speedtest/web-dashboard/">
+      
+      
+        <link rel="prev" href="../features/">
+      
+      
+        <link rel="next" href="../docker/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Web Dashboard - speedtest</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#web-dashboard" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="speedtest" class="md-header__button md-logo" aria-label="speedtest" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            speedtest
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Web Dashboard
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/takitsu21/speedtest" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    takitsu21/speedtest
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="speedtest" class="md-nav__button md-logo" aria-label="speedtest" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    speedtest
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/takitsu21/speedtest" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    takitsu21/speedtest
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Dashboard
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launching-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launching the Dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Sections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-speed-metrics-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Speed Metrics Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-connection-quality-indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Connection Quality Indicator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-interactive-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Interactive Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-network-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theme-toggle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theme Toggle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving the Dashboard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Saving the Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-save-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Save Location
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual Save
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sharing Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Technology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard Technology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#built-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built With
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browser Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mobile-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mobile Support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-isp-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ISP Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-network-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Network Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sharing-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sharing Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-beforeafter-comparisons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Before/After Comparisons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-multiple-location-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Multiple Location Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-visual-presentations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Visual Presentations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#current-customization-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Customization Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future Customization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-wont-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Won't Open
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-not-displaying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Map Not Displaying
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theme-not-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theme Not Switching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incorrect-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incorrect Location
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-looks-broken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Looks Broken
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privacy-and-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Privacy and Security
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privacy and Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-in-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data in Dashboard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safe-sharing-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe Sharing Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-dashboard-vs-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison: Dashboard vs. Console
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Developers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    For Developers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launching-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launching the Dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Sections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-speed-metrics-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Speed Metrics Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-connection-quality-indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Connection Quality Indicator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-interactive-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Interactive Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-network-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theme-toggle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theme Toggle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving the Dashboard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Saving the Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-save-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Save Location
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual Save
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sharing Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Technology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard Technology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#built-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built With
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browser Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mobile-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mobile Support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-isp-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ISP Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-network-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Network Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sharing-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sharing Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-beforeafter-comparisons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Before/After Comparisons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-multiple-location-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Multiple Location Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-visual-presentations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Visual Presentations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#current-customization-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Customization Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future Customization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-wont-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Won't Open
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-not-displaying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Map Not Displaying
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theme-not-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theme Not Switching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incorrect-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incorrect Location
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-looks-broken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Looks Broken
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privacy-and-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Privacy and Security
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privacy and Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-in-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data in Dashboard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safe-sharing-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe Sharing Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-dashboard-vs-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison: Dashboard vs. Console
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="web-dashboard">Web Dashboard<a class="headerlink" href="#web-dashboard" title="Permanent link">&para;</a></h1>
+<p>The <strong>speedtest-cli</strong> web dashboard provides an interactive, visual representation of your speed test results in a beautiful HTML interface that opens in your browser.</p>
+<p><img alt="Web Dashboard" src="../assets/web_view.png" /></p>
+<h2 id="launching-the-dashboard">Launching the Dashboard<a class="headerlink" href="#launching-the-dashboard" title="Permanent link">&para;</a></h2>
+<p>To run a speed test and open the results in your web browser:</p>
+<pre><code class="language-bash">speedtest-cli --web_view
+</code></pre>
+<p>This will:</p>
+<ol>
+<li>Run a complete speed test</li>
+<li>Generate an HTML dashboard</li>
+<li>Automatically open it in your default browser</li>
+</ol>
+<h2 id="dashboard-features">Dashboard Features<a class="headerlink" href="#dashboard-features" title="Permanent link">&para;</a></h2>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
+<p>The dashboard provides a comprehensive view of your network performance with:</p>
+<ul>
+<li><strong>Visual Speed Metrics</strong> - Large, easy-to-read speed indicators</li>
+<li><strong>Connection Quality</strong> - At-a-glance connection status</li>
+<li><strong>Interactive Map</strong> - Your location on an interactive map</li>
+<li><strong>Network Details</strong> - Complete metadata about your connection</li>
+<li><strong>Theme Toggle</strong> - Switch between light and dark modes</li>
+<li><strong>Responsive Design</strong> - Works on desktop, tablet, and mobile</li>
+</ul>
+<h3 id="main-sections">Main Sections<a class="headerlink" href="#main-sections" title="Permanent link">&para;</a></h3>
+<h4 id="1-speed-metrics-display">1. Speed Metrics Display<a class="headerlink" href="#1-speed-metrics-display" title="Permanent link">&para;</a></h4>
+<p>The top section shows your primary speed test results:</p>
+<p><strong>Download Speed</strong>
+- Displayed in Mbps (megabits per second)
+- Large, prominent number
+- Color-coded based on speed:
+  - 🟢 Green: Fast (&gt; 100 Mbps)
+  - 🟡 Yellow: Medium (25-100 Mbps)
+  - 🔴 Red: Slow (&lt; 25 Mbps)</p>
+<p><strong>Upload Speed</strong>
+- Displayed in Mbps
+- Similar color coding
+- Typically lower than download</p>
+<p><strong>Latency Metrics</strong>
+- <strong>Ping</strong>: Round-trip time in milliseconds
+  - 🟢 Excellent: &lt; 20ms
+  - 🟡 Good: 20-50ms
+  - 🔴 Poor: &gt; 50ms
+- <strong>Jitter</strong>: Latency variation in milliseconds
+- <strong>HTTP Latency</strong>: Application-level latency</p>
+<h4 id="2-connection-quality-indicator">2. Connection Quality Indicator<a class="headerlink" href="#2-connection-quality-indicator" title="Permanent link">&para;</a></h4>
+<p>A visual badge showing overall connection quality:</p>
+<ul>
+<li><strong>Excellent</strong>: Low latency, high speeds</li>
+<li><strong>Good</strong>: Decent performance for most tasks</li>
+<li><strong>Fair</strong>: Adequate for basic browsing</li>
+<li><strong>Poor</strong>: May experience slowdowns</li>
+</ul>
+<p><strong>Calculation:</strong>
+Based on a combination of:
+- Download speed
+- Upload speed
+- Ping latency
+- Jitter</p>
+<h4 id="3-interactive-map">3. Interactive Map<a class="headerlink" href="#3-interactive-map" title="Permanent link">&para;</a></h4>
+<p>Powered by <a href="https://leafletjs.com/">Leaflet.js</a>, the map shows:</p>
+<p><strong>Your Location</strong>
+- Pin marker at your coordinates
+- Based on IP geolocation
+- City/region displayed</p>
+<p><strong>Map Features</strong>
+- Zoom in/out controls
+- Pan around the map
+- OpenStreetMap tiles
+- Responsive to screen size</p>
+<p><strong>Privacy Note:</strong>
+The map is rendered entirely in your browser using your approximate location from Cloudflare's API. No tracking or external requests beyond map tiles.</p>
+<h4 id="4-network-metadata">4. Network Metadata<a class="headerlink" href="#4-network-metadata" title="Permanent link">&para;</a></h4>
+<p>Detailed information about your connection:</p>
+<p><strong>IP Information</strong></p>
+<pre><code>IP Address: 203.0.113.45
+IPv6: 2001:0db8:85a3::8a2e:0370:7334 (if available)
+</code></pre>
+<p><strong>ISP Details</strong></p>
+<pre><code>Provider: Example Broadband
+ASN: AS12345
+</code></pre>
+<p><strong>Location Details</strong></p>
+<pre><code>City: San Francisco
+Region: California
+Country: United States
+Coordinates: 37.7749, -122.4194
+</code></pre>
+<p><strong>Cloudflare Information</strong></p>
+<pre><code>Data Center: SFO
+Colo: San Francisco
+</code></pre>
+<h3 id="theme-toggle">Theme Toggle<a class="headerlink" href="#theme-toggle" title="Permanent link">&para;</a></h3>
+<p>Switch between light and dark modes for comfortable viewing in any environment.</p>
+<p><strong>Light Mode</strong>
+- Bright background
+- Dark text
+- Better for daytime viewing
+- Reduced eye strain in bright environments</p>
+<p><strong>Dark Mode</strong>
+- Dark background
+- Light text
+- Better for nighttime viewing
+- Reduced blue light exposure
+- Easier on the eyes in dark rooms</p>
+<p><strong>How to Switch:</strong>
+- Click the theme toggle button (usually top-right)
+- Theme preference saved in browser
+- Automatically persists across refreshes</p>
+<h2 id="saving-the-dashboard">Saving the Dashboard<a class="headerlink" href="#saving-the-dashboard" title="Permanent link">&para;</a></h2>
+<p>The dashboard is a standalone HTML file that includes all results and resources.</p>
+<h3 id="automatic-save-location">Automatic Save Location<a class="headerlink" href="#automatic-save-location" title="Permanent link">&para;</a></h3>
+<p>When you run <code>speedtest-cli --web_view</code>, the dashboard is saved to a temporary file and opened. The file location is typically:</p>
+<ul>
+<li><strong>Linux</strong>: <code>/tmp/speedtest_dashboard_XXXXXX.html</code></li>
+<li><strong>macOS</strong>: <code>/tmp/speedtest_dashboard_XXXXXX.html</code></li>
+<li><strong>Windows</strong>: <code>%TEMP%\speedtest_dashboard_XXXXXX.html</code></li>
+</ul>
+<h3 id="manual-save">Manual Save<a class="headerlink" href="#manual-save" title="Permanent link">&para;</a></h3>
+<p>To keep the dashboard permanently, save the HTML file from your browser:</p>
+<p><strong>Method 1: Save From Browser</strong>
+1. Run <code>speedtest-cli --web_view</code>
+2. In your browser: <code>File</code> → <code>Save Page As...</code>
+3. Choose location and filename
+4. Save as "Webpage, Complete" or "HTML Only"</p>
+<p><strong>Method 2: Redirect Output</strong>
+Currently, the dashboard file path isn't configurable, but you can find it in the temporary directory.</p>
+<h3 id="sharing-results">Sharing Results<a class="headerlink" href="#sharing-results" title="Permanent link">&para;</a></h3>
+<p>The dashboard HTML file is <strong>self-contained</strong> and can be shared:</p>
+<p><strong>What's Included:</strong>
+- All test results
+- Embedded CSS and JavaScript
+- Map functionality (requires internet for tiles)
+- Complete metadata</p>
+<p><strong>How to Share:</strong>
+1. Save the HTML file
+2. Send via email, cloud storage, or file sharing
+3. Recipients can open it in any modern browser
+4. No installation or special software needed</p>
+<p><strong>Privacy Considerations:</strong>
+The HTML file contains:
+- Your public IP address
+- Your approximate location (city/region)
+- Your ISP information</p>
+<p>Remove or redact this information if sharing publicly.</p>
+<h2 id="dashboard-technology">Dashboard Technology<a class="headerlink" href="#dashboard-technology" title="Permanent link">&para;</a></h2>
+<h3 id="built-with">Built With<a class="headerlink" href="#built-with" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>HTML5</strong>: Modern, semantic markup</li>
+<li><strong>CSS3</strong>: Beautiful styling with dark/light themes</li>
+<li><strong>Vanilla JavaScript</strong>: No framework dependencies</li>
+<li><strong>Leaflet.js</strong>: Interactive maps</li>
+<li><strong>Jinja2 Templates</strong>: Server-side rendering</li>
+</ul>
+<h3 id="browser-compatibility">Browser Compatibility<a class="headerlink" href="#browser-compatibility" title="Permanent link">&para;</a></h3>
+<p>Works in all modern browsers:</p>
+<ul>
+<li>✅ Chrome/Chromium 90+</li>
+<li>✅ Firefox 88+</li>
+<li>✅ Safari 14+</li>
+<li>✅ Edge 90+</li>
+<li>✅ Opera 76+</li>
+</ul>
+<p><strong>Minimum Requirements:</strong>
+- JavaScript enabled
+- ES6 support
+- LocalStorage (for theme preference)</p>
+<h3 id="mobile-support">Mobile Support<a class="headerlink" href="#mobile-support" title="Permanent link">&para;</a></h3>
+<p>Fully responsive design optimized for:</p>
+<ul>
+<li>📱 Smartphones (portrait and landscape)</li>
+<li>📱 Tablets (all orientations)</li>
+<li>💻 Laptops and desktops</li>
+<li>🖥️ Large displays</li>
+</ul>
+<p><strong>Mobile Features:</strong>
+- Touch-friendly controls
+- Optimized layout for small screens
+- Fast loading
+- No horizontal scrolling</p>
+<h2 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
+<h3 id="1-isp-verification">1. ISP Verification<a class="headerlink" href="#1-isp-verification" title="Permanent link">&para;</a></h3>
+<p>Run tests and save dashboards to document your actual speeds vs. advertised speeds:</p>
+<pre><code class="language-bash"># Run test and save dashboard
+speedtest-cli --web_view
+# Save the HTML file for your records
+</code></pre>
+<p><strong>Great For:</strong>
+- Comparing to ISP promises
+- Documenting performance issues
+- Submitting to customer support</p>
+<h3 id="2-network-troubleshooting">2. Network Troubleshooting<a class="headerlink" href="#2-network-troubleshooting" title="Permanent link">&para;</a></h3>
+<p>Visual representation helps identify issues:</p>
+<ul>
+<li><strong>High Ping/Jitter</strong>: Network instability</li>
+<li><strong>Low Download</strong>: ISP or Wi-Fi issues</li>
+<li><strong>Low Upload</strong>: Router or ISP configuration</li>
+<li><strong>Location Mismatch</strong>: VPN or routing issues</li>
+</ul>
+<h3 id="3-sharing-results">3. Sharing Results<a class="headerlink" href="#3-sharing-results" title="Permanent link">&para;</a></h3>
+<p>Send dashboard to:
+- IT support for troubleshooting
+- Friends for comparison
+- Social media for discussion
+- ISP customer service for evidence</p>
+<h3 id="4-beforeafter-comparisons">4. Before/After Comparisons<a class="headerlink" href="#4-beforeafter-comparisons" title="Permanent link">&para;</a></h3>
+<p>Document network changes:</p>
+<pre><code class="language-bash"># Before upgrade
+speedtest-cli --web_view
+# Save as &quot;before_upgrade.html&quot;
+
+# After upgrade
+speedtest-cli --web_view
+# Save as &quot;after_upgrade.html&quot;
+</code></pre>
+<p>Compare the two dashboards side-by-side.</p>
+<h3 id="5-multiple-location-testing">5. Multiple Location Testing<a class="headerlink" href="#5-multiple-location-testing" title="Permanent link">&para;</a></h3>
+<p>Test from different locations and save results:</p>
+<ul>
+<li>Home office</li>
+<li>Living room (Wi-Fi)</li>
+<li>Different floors</li>
+<li>During different times of day</li>
+</ul>
+<h3 id="6-visual-presentations">6. Visual Presentations<a class="headerlink" href="#6-visual-presentations" title="Permanent link">&para;</a></h3>
+<p>Use in reports or presentations:</p>
+<ul>
+<li>Screenshot the dashboard</li>
+<li>Embed in PowerPoint/Google Slides</li>
+<li>Include in network documentation</li>
+<li>Share in team meetings</li>
+</ul>
+<h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h2>
+<h3 id="current-customization-options">Current Customization Options<a class="headerlink" href="#current-customization-options" title="Permanent link">&para;</a></h3>
+<p>The dashboard currently includes:</p>
+<ul>
+<li><strong>Theme Toggle</strong>: Switch between light/dark</li>
+<li><strong>Automatic Browser Detection</strong>: Opens in default browser</li>
+<li><strong>Responsive Layout</strong>: Adapts to screen size</li>
+</ul>
+<h3 id="future-customization">Future Customization<a class="headerlink" href="#future-customization" title="Permanent link">&para;</a></h3>
+<p>Planned features (check GitHub for updates):</p>
+<ul>
+<li>Custom color schemes</li>
+<li>Export to PDF</li>
+<li>Chart/graph views</li>
+<li>Historical comparison</li>
+<li>Multiple test results in one dashboard</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="dashboard-wont-open">Dashboard Won't Open<a class="headerlink" href="#dashboard-wont-open" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Browser doesn't open automatically</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Check Default Browser</strong>:</li>
+<li>Ensure you have a default browser set</li>
+<li>
+<p>Try setting a different default</p>
+</li>
+<li>
+<p><strong>Manual Open</strong>:</p>
+</li>
+<li>Find the temporary HTML file in <code>/tmp</code> or <code>%TEMP%</code></li>
+<li>
+<p>Open it manually in your browser</p>
+</li>
+<li>
+<p><strong>Check Browser Installation</strong>:
+   ```bash
+   # Linux: Try explicitly
+   firefox "$(find /tmp -name 'speedtest_dashboard*.html' | head -1)"</p>
+</li>
+</ol>
+<p># macOS
+   open "$(find /tmp -name 'speedtest_dashboard*.html' | head -1)"</p>
+<p># Windows
+   start chrome "C:\Users\YourName\AppData\Local\Temp\speedtest_dashboard*.html"
+   ```</p>
+<h3 id="map-not-displaying">Map Not Displaying<a class="headerlink" href="#map-not-displaying" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Interactive map shows empty or broken</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Check Internet Connection</strong>: Map tiles require internet</li>
+<li><strong>Check Firewall</strong>: Allow access to OpenStreetMap servers</li>
+<li><strong>Try Different Browser</strong>: Some browsers block external resources</li>
+<li><strong>Disable Extensions</strong>: Ad blockers might block map resources</li>
+</ol>
+<h3 id="theme-not-switching">Theme Not Switching<a class="headerlink" href="#theme-not-switching" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Theme toggle button doesn't work</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Enable JavaScript</strong>: Dashboard requires JavaScript</li>
+<li><strong>Clear Browser Cache</strong>: Old files might be cached</li>
+<li><strong>Check Browser Console</strong>: Look for JavaScript errors (F12 → Console)</li>
+<li><strong>Try Incognito/Private Mode</strong>: Test without extensions</li>
+</ol>
+<h3 id="incorrect-location">Incorrect Location<a class="headerlink" href="#incorrect-location" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Map shows wrong location</p>
+<p><strong>Explanation:</strong>
+- Location is based on IP geolocation from Cloudflare
+- May not be exact street address
+- Usually accurate to city/region level
+- VPNs will show VPN server location</p>
+<p><strong>This is Normal:</strong>
+IP-based geolocation is approximate and can be:
+- Several miles off
+- In a nearby city
+- At ISP's location rather than yours</p>
+<h3 id="dashboard-looks-broken">Dashboard Looks Broken<a class="headerlink" href="#dashboard-looks-broken" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Styling issues or layout problems</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><strong>Update Browser</strong>: Use latest version</li>
+<li><strong>Enable CSS</strong>: Ensure stylesheets are loaded</li>
+<li><strong>Check Browser Compatibility</strong>: Use supported browser</li>
+<li><strong>Disable Reader Mode</strong>: May interfere with layout</li>
+<li><strong>Reset Zoom</strong>: Set browser zoom to 100%</li>
+</ol>
+<h2 id="privacy-and-security">Privacy and Security<a class="headerlink" href="#privacy-and-security" title="Permanent link">&para;</a></h2>
+<h3 id="data-in-dashboard">Data in Dashboard<a class="headerlink" href="#data-in-dashboard" title="Permanent link">&para;</a></h3>
+<p>The HTML file contains:</p>
+<p><strong>Personal Information:</strong>
+- Public IP address
+- Approximate location (city/region)
+- ISP name</p>
+<p><strong>Does NOT Contain:</strong>
+- Exact home address
+- Personal identification
+- Browsing history
+- Device information beyond test results</p>
+<h3 id="safe-sharing-practices">Safe Sharing Practices<a class="headerlink" href="#safe-sharing-practices" title="Permanent link">&para;</a></h3>
+<p><strong>Public Sharing:</strong>
+If posting online, consider:
+- Blurring or editing IP address
+- Removing precise coordinates
+- Using screenshot instead of full HTML</p>
+<p><strong>Private Sharing:</strong>
+For IT support or troubleshooting:
+- Full HTML is helpful
+- Contains necessary diagnostic info
+- Can be shared safely with trusted parties</p>
+<h3 id="local-storage">Local Storage<a class="headerlink" href="#local-storage" title="Permanent link">&para;</a></h3>
+<p><strong>What's Stored:</strong>
+- Theme preference (light/dark)
+- Saved in browser's localStorage</p>
+<p><strong>What's NOT Stored:</strong>
+- Test results
+- Personal data
+- Analytics or tracking</p>
+<h2 id="comparison-dashboard-vs-console">Comparison: Dashboard vs. Console<a class="headerlink" href="#comparison-dashboard-vs-console" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Web Dashboard</th>
+<th>Console Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visual Appeal</strong></td>
+<td>High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Interactivity</strong></td>
+<td>Yes (map, theme)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Shareability</strong></td>
+<td>Easy (HTML file)</td>
+<td>Screenshot needed</td>
+</tr>
+<tr>
+<td><strong>Automation</strong></td>
+<td>Manual</td>
+<td>Easy (scripting)</td>
+</tr>
+<tr>
+<td><strong>Details</strong></td>
+<td>All metadata</td>
+<td>All metrics</td>
+</tr>
+<tr>
+<td><strong>Map</strong></td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>Light/Dark</td>
+<td>Terminal theme</td>
+</tr>
+<tr>
+<td><strong>Browser Required</strong></td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Use Dashboard When:</strong>
+- Sharing results with others
+- Presenting to non-technical users
+- Documenting for records
+- Visual comparison needed</p>
+<p><strong>Use Console When:</strong>
+- Automation/scripting
+- Quick tests
+- Headless environments
+- CI/CD pipelines</p>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../usage/">Usage Guide</a></strong> - Learn all CLI options</li>
+<li><strong><a href="../features/">Features</a></strong> - Explore all capabilities</li>
+<li><strong><a href="../api-reference/">API Reference</a></strong> - Programmatic access</li>
+<li><strong><a href="../faq/">FAQ</a></strong> - Common questions and troubleshooting</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://takitsu21.com">takitsu21</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/takitsu21/speedtest" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/speedtest" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
