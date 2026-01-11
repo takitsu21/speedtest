@@ -30,10 +30,7 @@ PING_TIMEOUT = 3
 
 @functools.cache
 def client() -> httpx.Client:
-    headers = {
-        "Connection": "Keep-Alive",
-        "Referer": CLOUDFLARE_HOST
-    }
+    headers = {"Connection": "Keep-Alive", "Referer": f"https://{CLOUDFLARE_HOST}/"}
     return httpx.Client(headers=headers, timeout=None)  # noqa: S113
 
 

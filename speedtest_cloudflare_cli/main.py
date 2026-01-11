@@ -16,7 +16,7 @@ from speedtest_cloudflare_cli.models import metadata, result
 DOWNLOAD_SIZE = 30  # 30MB
 UPLOAD_SIZE = 30  # 30MB
 
-SPEEDTEST_URL = "https://speed.cloudflare.com/"
+SPEEDTEST_URL = "https://speed.cloudflare.com"
 
 
 def display_results(

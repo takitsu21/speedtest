@@ -8,7 +8,18 @@ repo_name: takitsu21/speedtest
 copyright: Maintained by <a href="https://takitsu21.com">takitsu21</a>.
 
 nav:
-  - Getting started: index.md
+  - Home: index.md
+  - User Guide:
+    - Installation: installation.md
+    - Usage: usage.md
+    - Features: features.md
+    - Web Dashboard: web-dashboard.md
+  - Deployment:
+    - Docker: docker.md
+  - For Developers:
+    - API Reference: api-reference.md
+    - Contributing: contributing.md
+  - FAQ: faq.md
 plugins:
   - search
   - mkdocstrings:
