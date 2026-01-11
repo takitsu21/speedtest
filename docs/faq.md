@@ -262,6 +262,87 @@ This is **normal** and expected because:
 3. Use same connection type (Wi-Fi vs Ethernet)
 4. Close background applications
 
+### Why Does My Test Size Change Each Time?
+
+**Problem:** Test size varies between runs
+
+**Explanation:**
+
+This is **adaptive mode** (enabled by default). It automatically adjusts test size based on your connection speed
+
+**How It Works:**
+
+1. Runs a quick 5MB probe test
+2. Estimates your connection speed
+3. Calculates optimal test size for ~7.5 second duration
+4. Uses size between 1MB and 200MB
+
+**To Disable:**
+
+```bash
+# Use fixed 30MB size
+speedtest-cli --no-adaptive
+
+# Or specify manual size
+speedtest-cli --download_size 50
+```
+
+### How Do I Disable Adaptive Mode?
+
+**Problem:** Want to use fixed test sizes
+
+**Solutions:**
+
+1. **Disable adaptive mode:**
+   
+   ```bash
+   speedtest-cli --no-adaptive
+   ```
+
+2. **Specify manual sizes** (automatically disables adaptive):
+   
+   ```bash
+   speedtest-cli --download_size 50 --upload_size 25
+   ```
+
+3. **For scripts** expecting fixed sizes:
+   
+   ```bash
+   speedtest-cli --no-adaptive --json-output results.json
+   ```
+
+**Use Cases for Disabling:**
+
+- Comparing results with specific test sizes
+- Meeting exact test requirements
+- Legacy scripts expecting fixed data volumes
+- Benchmarking with consistent parameters
+
+### What If the Probe Test Gives Wrong Results?
+
+**Problem:** Probe test estimates incorrect speed
+
+**Explanation:**
+
+The probe test is intentionally short (1-2 seconds) and may not always be perfectly accurate. This is okay because:
+
+- It's designed for a quick estimate, not precision
+- Falls back to default 30MB if probe fails
+- Main test still provides accurate final results
+- Uses min/max boundaries (1MB - 200MB) to prevent extremes
+
+**If Consistently Inaccurate:**
+
+```bash
+# Disable adaptive mode
+speedtest-cli --no-adaptive
+
+# Or specify exact sizes
+speedtest-cli -ds 100 -us 50
+```
+
+**Note:** The probe's purpose is to optimize test duration, not to measure your exact speed. The main test provides the accurate measurement.
+
 ### Web Dashboard Won't Open
 
 **Problem:** `--web_view` doesn't open browser

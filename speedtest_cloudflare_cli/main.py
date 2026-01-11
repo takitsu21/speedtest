@@ -6,6 +6,7 @@ import sys
 from importlib import metadata as pkg_metadata
 from pathlib import Path
 
+import rich
 import rich.json
 import rich.table
 import rich_click as click
@@ -75,10 +76,16 @@ def display_results(
 @click.option("--download_size", "-ds", type=int, default=DOWNLOAD_SIZE, help="Download size in MB")
 @click.option("--upload_size", "-us", type=int, default=UPLOAD_SIZE, help="Upload size in MB")
 @click.option("--attempts", "-a", type=int, default=5, help="Number of attempts")
+@click.option("--timeout", "-t", type=float, default=10.0, help="Timeout per test in seconds (default: 10)")
 @click.option("--json", is_flag=True, help="Output results in JSON format")
 @click.option("--silent", is_flag=True, help="Run in silent mode")
 @click.option("--json-output", type=click.Path(writable=True), default=None, help="Save JSON results to file")
 @click.option("--web_view", is_flag=True, help="Open results in web browser")
+@click.option(
+    "--adaptive/--no-adaptive",
+    default=True,
+    help="Enable adaptive test sizing based on connection speed (default: enabled)",
+)
 def main(
     *,
     download: bool,
@@ -86,25 +93,38 @@ def main(
     download_size: int,
     upload_size: int,
     attempts: int,
+    timeout: float | None,
     json: bool,
     silent: bool,
     json_output: str,
     web_view: bool,
+    adaptive: bool,
 ) -> None:
-    download_size = download_size * speedtest.CHUNK_SIZE
-    upload_size = upload_size * speedtest.CHUNK_SIZE
+    # If user specifies manual size, disable adaptive mode
+    user_specified_size = download_size != DOWNLOAD_SIZE or upload_size != UPLOAD_SIZE
+    if user_specified_size and adaptive:
+        adaptive = False
+        if not silent:
+            rich.print("[yellow]Note: Adaptive mode disabled due to manual size specification[/yellow]")
+
+    download_size_bytes = download_size * speedtest.CHUNK_SIZE
+    upload_size_bytes = upload_size * speedtest.CHUNK_SIZE
     speedtester = speedtest.SpeedTest(
-        url=SPEEDTEST_URL, download_size=download_size, upload_size=upload_size, attempts=attempts
+        url=SPEEDTEST_URL,
+        download_size=download_size_bytes,
+        upload_size=upload_size_bytes,
+        attempts=attempts,
+        timeout=timeout,
     )
     download_result = None
     upload_result = None
     if download:
-        download_result = speedtester.download_speed(silent=silent)
+        download_result = speedtester.download_speed(silent=silent, adaptive=adaptive, default_size_mb=download_size)
     if upload:
-        upload_result = speedtester.upload_speed(silent=silent)
+        upload_result = speedtester.upload_speed(silent=silent, adaptive=adaptive, default_size_mb=upload_size)
     if not download and not upload:
-        download_result = speedtester.download_speed(silent=silent)
-        upload_result = speedtester.upload_speed(silent=silent)
+        download_result = speedtester.download_speed(silent=silent, adaptive=adaptive, default_size_mb=download_size)
+        upload_result = speedtester.upload_speed(silent=silent, adaptive=adaptive, default_size_mb=upload_size)
 
     results = {
         "download": download_result.__dict__ if download_result else None,
