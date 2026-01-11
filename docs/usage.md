@@ -157,6 +157,50 @@ speedtest-cli -a 3
 speedtest-cli -a 5
 ```
 
+#### `--adaptive` / `--no-adaptive`
+
+Enable or disable adaptive test sizing based on connection speed.
+
+```bash
+# Adaptive mode is enabled by default
+speedtest-cli
+
+# Explicitly disable adaptive mode
+speedtest-cli --no-adaptive
+```
+
+**Default:** Enabled  
+**Use Case:** 
+- **Enabled (default)**: Automatically adjusts test size for optimal duration
+- **Disabled**: Uses fixed 30MB test size (legacy behavior)
+
+**How It Works:**
+1. Runs a quick 5MB probe test to estimate your speed
+2. Calculates optimal test size for ~7.5 second duration
+3. Uses adaptive size (between 1MB and 200MB)
+
+**Example:**
+```bash
+# Let adaptive mode optimize test size (default)
+speedtest-cli
+
+# Output:
+# Running probe test to detect connection speed...
+# ✓ Detected speed: ~56.1 Mbps
+# Adaptive mode: Using 53MB for download test
+
+# Disable adaptive mode to use fixed 30MB
+speedtest-cli --no-adaptive
+
+# Note: Manual size specification automatically disables adaptive
+speedtest-cli --download_size 50  # Uses exactly 50MB, adaptive disabled
+```
+
+**Benefits:**
+- **Faster tests** on slow connections (no more waiting for 30MB on 1 Mbps!)
+- **More accurate** on fast connections (uses larger test sizes)
+- **Consistent duration** (~7-10 seconds regardless of connection speed)
+
 ---
 
 ### Output Options

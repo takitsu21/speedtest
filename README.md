@@ -40,6 +40,16 @@ uv tool install speedtest-cloudflare-cli
 pip install speedtest-cloudflare-cli
 ```
 
+## Features
+
+- ⏱️ **Time-Based Testing** - 10 second default timeout per test for consistent, fast results
+- 🚀 **Adaptive Test Sizing** - Automatically adjusts test size based on your connection speed
+- 📊 **Comprehensive Metrics** - Download/upload speed, ping, jitter, and HTTP latency
+- 🌍 **Cloudflare Infrastructure** - Tests using Cloudflare's global network
+- 🎨 **Beautiful Output** - Rich terminal interface with progress bars and tables
+- 📄 **Multiple Output Formats** - Console, JSON, and interactive web dashboard
+- 🔒 **Privacy Focused** - No tracking, no accounts, open source
+
 ## Usage
 
 Run the following command to test your internet speed.
@@ -49,6 +59,16 @@ speedtest-cli
 ```
 
 ![Speedtest output](docs/assets/speedtest_output.png)
+
+By default, each test (download/upload) runs for **10 seconds** and calculates speed based on data transferred. You can customize the timeout:
+
+```bash
+# 5 second timeout per test
+speedtest-cli --timeout 5
+
+# 20 second timeout for more accuracy
+speedtest-cli --timeout 20
+```
 
 For more information, run the --help command.
 ```bash

@@ -466,6 +466,65 @@ speedtest-cli -ds 100 -us 50
 | 100-500 Mbps    | 100-200 MB              | 50-100 MB              |
 | > 500 Mbps      | 200+ MB                 | 100+ MB                |
 
+### Adaptive Test Sizing
+
+**NEW:** Automatically adjusts test sizes based on your connection speed.
+
+**How It Works:**
+
+1. Runs a quick 5MB probe test (takes 1-2 seconds)
+2. Estimates your connection speed from probe results
+3. Calculates optimal test size for ~7.5 second test duration
+4. Applies min/max boundaries (1MB - 200MB)
+5. Runs main test with adaptive size
+
+**Benefits:**
+
+- **Fast for slow connections**: 1 Mbps connection uses 1MB test (not 30MB!)
+- **Accurate for fast connections**: 500 Mbps connection uses 200MB test
+- **Saves time**: No more waiting for large downloads on slow connections
+- **Balanced accuracy**: Tests run long enough for accurate measurements
+
+**Enabled by Default:**
+
+```bash
+# Adaptive mode is enabled automatically
+speedtest-cli
+
+# Example output:
+# Running probe test to detect connection speed...
+# ✓ Detected speed: ~56.1 Mbps
+# Adaptive mode: Using 53MB for download test
+```
+
+**Disable Adaptive Mode:**
+
+```bash
+# Use fixed 30MB size (legacy behavior)
+speedtest-cli --no-adaptive
+
+# Manual sizes always disable adaptive
+speedtest-cli --download_size 50  # Uses exactly 50MB
+```
+
+**Example Scenarios:**
+
+| Connection Speed | Probe Detects | Adaptive Size | Test Duration |
+|-----------------|---------------|---------------|---------------|
+| 1 Mbps          | ~1 Mbps       | 1 MB          | ~8 seconds    |
+| 10 Mbps         | ~10 Mbps      | 9 MB          | ~7 seconds    |
+| 50 Mbps         | ~50 Mbps      | 47 MB         | ~7.5 seconds  |
+| 100 Mbps        | ~100 Mbps     | 94 MB         | ~7.5 seconds  |
+| 500 Mbps        | ~480 Mbps     | 200 MB (max)  | ~3.2 seconds  |
+| 1000 Mbps       | ~950 Mbps     | 200 MB (max)  | ~1.6 seconds  |
+
+**When to Disable:**
+
+- Comparing results with specific test sizes
+- Meeting exact test requirements for diagnostics
+- Using scripts that expect specific data volumes
+- Benchmarking with consistent parameters
+
 ---
 
 ## IPv6 Support
