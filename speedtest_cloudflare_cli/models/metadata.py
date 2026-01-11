@@ -1,6 +1,6 @@
 import datetime
 
-from pydantic import BaseModel, Field, computed_field
+from pydantic import BaseModel, Field, computed_field, field_validator
 
 
 class Metadata(BaseModel):
@@ -16,6 +16,14 @@ class Metadata(BaseModel):
     postal_code: str | None = Field(alias="postalCode", default="N/A")
     latitude: str
     longitude: str
+
+    @field_validator("colo", mode="before")
+    @classmethod
+    def extract_colo_iata(cls, v):
+        """Extract IATA code from colo object if present."""
+        if isinstance(v, dict):
+            return v.get("iata", "N/A")
+        return v  # Return as-is if already a string
 
     @computed_field
     @property
