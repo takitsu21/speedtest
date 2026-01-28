@@ -130,7 +130,7 @@ def main(
         "download": download_result.__dict__ if download_result else None,
         "upload": upload_result.__dict__ if upload_result else None,
         "metadata": speedtester.metadata.__dict__,
-        "timestamp": speedtester.metadata.date,
+        "timestamp": speedtester.metadata.date.isoformat(),
     }
 
     if json:
