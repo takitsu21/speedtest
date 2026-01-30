@@ -58,9 +58,11 @@ def test_wait(my_speedtest_object, mocker: MockerFixture):
 #     )
 
 
-def test_data_blocks(my_speedtest_object):
-    data_blocks = my_speedtest_object.upload_data_blocks
-    assert data_blocks == b"0" * my_speedtest_object.upload_size
+def test_upload_chunk(my_speedtest_object):
+    from speedtest_cloudflare_cli.core.speedtest import CHUNK_SIZE
+
+    upload_chunk = my_speedtest_object.upload_chunk
+    assert upload_chunk == b"0" * CHUNK_SIZE
 
 
 # @unittest.mock.patch("time.perf_counter")
